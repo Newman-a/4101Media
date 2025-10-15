@@ -1,7 +1,7 @@
 // src/components/CountUp.tsx
 
 import { useEffect, useRef } from 'react';
-import { useInView, useMotionValue, useSpring } from 'motion/react';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
 interface CountUpProps {
   to: number;

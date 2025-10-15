@@ -31,7 +31,7 @@ const AboutSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24">
+    <section className="py-24 app-grainy-background">
       {/* Añadimos la ref al contenedor principal */}
       <div ref={containerRef} className="container mx-auto px-6 text-center">
         <h2 className="text-base font-semibold text-[#ff6600] tracking-wider uppercase">Sobre Nosotros</h2>

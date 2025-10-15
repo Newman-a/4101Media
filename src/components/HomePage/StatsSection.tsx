@@ -3,7 +3,7 @@ import StatCard from './StatCard';
 
 const StatsSection: React.FC = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 app-grainy-background">
       {/* 1. Añadimos los keyframes y la clase de animación */}
       <style>
         {`
@@ -28,7 +28,7 @@ const StatsSection: React.FC = () => {
         `}
       </style>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 ">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           
           {/* 2. Envolvemos cada StatCard en un div para animarlo con un retraso */}
