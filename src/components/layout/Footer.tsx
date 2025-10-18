@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, LEGAL_LINKS } from '@/utils/constants';
 // 👈 Importamos la URL del logo aquí también
-import LogoUrl from '@/assets/logo.webp';  
+import LogoUrl from '/logo.webp';  
 
 // Componente para un ícono social individual
 const SocialIcon: React.FC<{ href: string; path: string; label: string }> = ({ href, path, label }) => (

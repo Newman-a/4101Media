@@ -6,11 +6,13 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/CookieConsent';
-import AboutPage from '@/pages/AboutPage';
-import TeamPage from '@/pages/TeamPage';
-import ThemeTesterPage from '@/pages/ThemeTesterPage';
 
-// Se actualizan las importaciones dinámicas
+
+// Componente 404: Debes crearlo en src/pages/NotFoundPage.tsx
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage')); 
+
+const TeamPage = lazy(() => import('@/pages/TeamPage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const ServicesPage = lazy(() => import('@/pages/ServicesPage'));
 const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
@@ -74,7 +76,8 @@ const App: React.FC = () => {
                         <Route path="/Politica-de-privacidad" element={<PoliticaDePrivacidad />} />
                         <Route path="/Politica-de-cookies" element={<PoliticaDeCookies />} />
 
-                        <Route path="/ThemeTesterPage" element={ <ThemeTesterPage /> } />
+                        {/* 💡 RUTA DE CAPTURA 404: Debe ser la última ruta. */}
+                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Suspense>
             </main>

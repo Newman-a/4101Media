@@ -53,7 +53,7 @@ const PortfolioPage: React.FC = () => {
     }, { scope: containerRef });
 
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="app-grainy-background text-white min-h-screen">
             <div ref={containerRef} className="pt-24 md:pt-32 pb-20"> {/* Aplicamos la ref principal */}
                 <div className="container mx-auto px-6">
                     {/* Header - Añadimos una clase para seleccionarlo */}

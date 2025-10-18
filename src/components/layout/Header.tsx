@@ -5,7 +5,7 @@ import type { NavLink } from '@/types/index';
 import MenuIcon from '@/components/icons/MenuIcon';
 import CloseIcon from '@/components/icons/CloseIcon';
 // Importamos el SVG como una URL (LogoUrl)
-import LogoUrl from '@/assets/logo.webp'; 
+import LogoUrl from '/logo.webp'; 
 
 const Header: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);

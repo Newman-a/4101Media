@@ -53,7 +53,7 @@ const ClientsSection: React.FC = () => {
 
   return (
     // La sección sigue siendo el contenedor principal
-    <section ref={sectionRef} className="py-20 app-grainy-background">
+    <section ref={sectionRef} className=" app-grainy-background">
       
       {/* 👇 Este contenedor es SOLO para el texto que quieres centrado */}
       <div className="container mx-auto px-6">

@@ -2,81 +2,66 @@
 
 import React, { lazy, Suspense } from 'react';
 
-// =============================================================
-// 1. IMPORTACIÓN ESTÁTICA (CRÍTICA)
-// El HeroSection debe cargarse inmediatamente para la métrica LCP (Largest Contentful Paint).
+// =======================================================
+// 1. IMPORTACIONES CRÍTICAS (Se cargan inmediatamente)
+// =======================================================
+// Estos componentes suelen ser críticos para el LCP (Largest Contentful Paint)
 import HeroSection from '@/components/HomePage/HeroSection';
 
-// =============================================================
-// 2. IMPORTACIONES DINÁMICAS (LAZY LOADING)
-// Los componentes de abajo se importan dinámicamente. Esto evita que sus dependencias (como framer-motion o grandes archivos JS)
-// se carguen con la carga inicial de la página.
 
-const StatsSection = lazy(() => import('@/components/HomePage/StatsSection'));
-const ClientsSection = lazy(() => import('@/components/HomePage/ClientsSection'));
-const AboutSection = lazy(() => import('@/components/HomePage/AboutSection'));
-const ServicesHighlightSection = lazy(() => import('@/components/HomePage/ServicesHighlightSection'));
-const ContactSection = lazy(() => import('@/components/ContactSection')); 
+// =======================================================
+// 2. IMPORTACIONES LAZY (Se cargan solo cuando son necesarias)
+// =======================================================
+// Estos componentes son candidatos ideales para carga diferida, 
+// ya que arrastran librerías grandes (como framer-motion) o están fuera del viewport inicial.
 
-// =============================================================
-// 3. FALLBACK (Lo que se muestra mientras se carga el componente)
-// Es crucial usar un fallback que sea ligero y que mantenga la estructura visual.
-const SectionFallback: React.FC = () => (
-    // Usa estilos ligeros y animaciones CSS simples. 
-    // Un 'skeleton loader' o un espacio con altura fija es ideal.
-    <div className="min-h-[300px] w-full bg-gray-900 animate-pulse flex items-center justify-center text-gray-500">
-        Cargando sección...
-    </div>
-);
+const LazyStatsSection = lazy(() => import('@/components/HomePage/StatsSection'));
+const LazyClientsSection = lazy(() => import('@/components/HomePage/ClientsSection'));
+const LazyAboutSection = lazy(() => import('@/components/HomePage/AboutSection'));
+const LazyServicesHighlightSection = lazy(() => import('@/components/HomePage/ServicesHighlightSection'));
+const LazyContactSection = lazy(() => import('@/components/ContactSection'));
 
 
 const HomePage: React.FC = () => {
-    return (
-        <div className=" text-white">
-            
-            {/* ------------------------------------------------------------------ */}
-            {/* 1. SECCIÓN CRÍTICA: Se carga de inmediato */}
-            <HeroSection />
-            
-            {/* ------------------------------------------------------------------ */}
-            {/* 2. SECCIONES SECUNDARIAS: Usan Suspense y Lazy Loading */}
+  return (
+    <div className=" text-white">
+      
+      {/* ------------------------------------------- */}
+      {/* SECCIÓN CRÍTICA: Se carga de inmediato */}
+      {/* ------------------------------------------- */}
+      <HeroSection />
 
-            {/* StatsSection es el más importante de cargar de forma perezosa por la dependencia de 'framer-motion' */}
-            <Suspense fallback={<SectionFallback />}>
-                <StatsSection />
-            </Suspense>
+      {/* ------------------------------------------- */}
+      {/* SECCIONES NO CRÍTICAS: Aplicamos Suspense y Lazy */}
+      {/* ------------------------------------------- */}
 
-            <Suspense fallback={<SectionFallback />}>
-                <ClientsSection />
-            </Suspense>
-            
-            <Suspense fallback={<SectionFallback />}>
-                <AboutSection />
-            </Suspense>
-            
-            <Suspense fallback={<SectionFallback />}>
-                <ServicesHighlightSection />
-            </Suspense>
+      {/* * Suspense envuelve la sección y muestra un 'fallback' mientras el bundle de JS
+        * de LazyStatsSection (que incluye framer-motion.js) se descarga.
+      */}
+      <Suspense fallback={<div className="h-20 flex items-center justify-center">Cargando estadísticas...</div>}>
+        <LazyStatsSection />
+      </Suspense>
 
-            {/* <Suspense fallback={<SectionFallback />}>
-                <PortfolioHighlightSection />
-            </Suspense> */}
+      {/* Agrupamos las demás secciones que suelen estar fuera de la vista */}
+      <Suspense fallback={<div className="h-40 flex items-center justify-center">Cargando secciones adicionales...</div>}>
+        <LazyClientsSection />
+        <LazyAboutSection />
+        <LazyServicesHighlightSection />
+        {/* <PortfolioHighlightSection /> */}
 
-            {/* ------------------------------------------------------------------ */}
-            {/* 3. SECCIÓN DE CONTACTO: Se carga de forma perezosa */}
-            <div className="py-20 md:py-32 app-grainy-background ">
-                <div className="container mx-auto px-6 ">
-                    <Suspense fallback={<SectionFallback />}>
-                        <ContactSection 
-                            title="Inicia tu Próximo Gran Proyecto"
-                            subtitle="Nos encantaría escuchar sobre tus ideas y ayudarte a hacerlas realidad. Contáctanos para empezar."
-                        />
-                    </Suspense>
-                </div>
-            </div>
-            
+        {/* Sección de Contacto Diferida */}
+        <div className="py-20 md:py-32 app-grainy-background ">
+          <div className="container mx-auto px-6 ">
+            <LazyContactSection 
+              title="Inicia tu Próximo Gran Proyecto"
+              subtitle="Nos encantaría escuchar sobre tus ideas y ayudarte a hacerlas realidad. Contáctanos para empezar."
+            />
+          </div>
         </div>
-    );
+      </Suspense>
+      
+    </div>
+  );
 };
 
 export default HomePage;

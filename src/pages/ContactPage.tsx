@@ -5,7 +5,7 @@ import ContactSection from '@/components/ContactSection'; // Ajusta la ruta si e
 
 const ContactPage: React.FC = () => {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="app-grainy-background text-white min-h-screen">
       <div className="pt-24 md:pt-32 pb-20">
         <div className="container mx-auto px-6">
           <ContactSection />

@@ -33,7 +33,7 @@ const ServicesHighlightSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24 app-grainy-background">
+    <section className="py-24 app-grainy-background ">
       {/* 4. Colocamos la ref en el div que envuelve TODO el contenido a animar */}
       <div ref={containerRef} className="container mx-auto px-6">
         

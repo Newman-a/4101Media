@@ -1,7 +1,7 @@
 // constants.ts (Versión final con LEGAL_LINKS)
 
 import { NavLink, TeamMember, Value, Service, Project, Client } from '@/types/index';
-import deltaLogoPath from '@/assets/clients/delta-logo.webp';
+import deltaLogoPath from '/clients/delta-logo.webp';
 
 export const NAV_LINKS: NavLink[] = [
     { name: 'Inicio', path: '/' },

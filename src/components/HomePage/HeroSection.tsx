@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
-import ArrowRightIcon from '../icons/ArrowRightIcon';
-import ShinyText from './common/ShinyText';
+import ArrowRightIcon from '@/components/icons/ArrowRightIcon';
+import ShinyText from '@/components/HomePage/common/ShinyText';
 // 👈 IMPORTACIÓN DEL VIDEO: Asumiendo que el archivo está en src/assets/
-import heroVideo from '/src/assets/4101mediafondo.mp4'; 
+import heroVideo from '/4101mediafondo.mp4'; 
 
 // Register the SplitText plugin
 gsap.registerPlugin(SplitText);
@@ -40,13 +40,13 @@ const HeroSection: React.FC = () => {
       <video
         autoPlay
         loop
-        muted // ESENCIAL para el autoplay
-        playsInline // Mejor compatibilidad en móviles
-        preload="metadata" // Ayuda a cargar los metadatos más rápido
-        // Posicionamiento absoluto para cubrir la sección, z-0 para estar detrás de todo
+        muted 
+        playsInline 
+        preload="metadata" 
+  
         className="absolute top-0 left-0 w-full h-full object-cover z-0" 
       >
-        {/* Usamos la variable importada 'heroVideo' */}
+
         <source src={heroVideo} type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
