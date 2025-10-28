@@ -3,36 +3,15 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { CLIENTS } from '@/utils/constants';
-import LogoLoop from './common/LogoLoop'; 
+import Marquee from 'react-fast-marquee'; // 1. IMPORTAR MARQUEE
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ClientsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
-  const clientLogos = CLIENTS.map((client, index) => ({
-    node: (
-      client.logoUrl ? (
-        <img 
-          key={index}
-          src={client.logoUrl} 
-          alt={`${client.name} Logo`}
-          className="h-36 sm:h-20 w-36 object-cover" 
-        />
-      ) : (
-        <span 
-          key={index}
-          className="text-2xl font-semibold uppercase tracking-widest text-white/70"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
-        >
-          {client.name}
-        </span>
-      )
-    )
-  }));
-
+  // La animación GSAP para el título sigue igual
   useGSAP(() => {
-    // Tu animación GSAP puede seguir igual, ya que apunta a la sección
     const elementsToAnimate = sectionRef.current?.querySelector('.container')?.children;
 
     if (elementsToAnimate) {
@@ -52,25 +31,55 @@ const ClientsSection: React.FC = () => {
   }, { scope: sectionRef });
 
   return (
-    // La sección sigue siendo el contenedor principal
-    <section ref={sectionRef} className=" app-grainy-background">
+    <section ref={sectionRef} className="">
       
-      {/* 👇 Este contenedor es SOLO para el texto que quieres centrado */}
+      {/* El título sigue igual */}
       <div className="container mx-auto px-6">
         <p className="text-center text-3xl md:text-4xl font-bold text-[#ff6600] tracking-wider mb-10">
           CONFIAN EN NOSOTROS
         </p>
       </div>
-      {/* El contenedor termina aquí */}
 
-      {/* 👇 LogoLoop ahora está fuera del contenedor, ocupando el ancho completo */}
-      <LogoLoop 
-        logos={clientLogos}
+      {/* 3. REEMPLAZAR LogoLoop CON Marquee */}
+      <Marquee 
+        pauseOnHover={true}
         speed={70}
-        gap={80}
-        fadeOut={true}
-        fadeOutColor="transparent"
-      />
+        gradient={true} // Reemplaza 'fadeOut'
+        gradientColor="[0, 0, 0]" // Color del difuminado (negro, de tu fondo)
+        gradientWidth={150} // Ancho del difuminado
+      >
+        {/* 4. Mapeamos CLIENTS directamente aquí */}
+        {CLIENTS.map((client, index) => (
+          
+          // 👇👇 AQUÍ ESTÁ EL CONTROL DE TAMAÑO 👇👇
+          // Cambia 'h-20' (80px) por un valor más grande.
+          // Por ejemplo: h-24 (96px), h-32 (128px), h-40 (160px)
+          <div 
+            key={index}
+            // Ajusta el 'mx-10' (40px) para el espaciado
+            className="mx-10 flex h-40 items-center justify-center" // <--- CAMBIA 'h-20'
+          >
+            {client.logoUrl ? (
+              <img 
+                src={client.logoUrl} 
+                alt={`${client.name} Logo`}
+                // Esta clase ('max-h-full') se asegura de que la imagen
+                // crezca hasta el tamaño del 'div' padre que cambiaste.
+                className="max-h-full w-auto object-contain" 
+              />
+            ) : (
+              <span 
+                // Si aumentas mucho la altura, quizás también
+                // quieras aumentar el tamaño del texto (ej: text-3xl)
+                className="text-2xl font-semibold uppercase tracking-widest text-white/70"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {client.name}
+              </span>
+            )}
+          </div>
+        ))}
+      </Marquee>
 
     </section>
   );

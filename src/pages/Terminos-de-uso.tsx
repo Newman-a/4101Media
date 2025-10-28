@@ -1,8 +1,14 @@
 import React from 'react';
+import SEO from '@/components/SEO'; // IMPORTAR EL COMPONENTE SEO
 
 const TerminosDeUso: React.FC = () => {
   return (
     <div className="app-grainy-background text-white min-h-screen">
+      <SEO
+        title="Términos de Uso"
+        description="Al acceder y utilizar este sitio web, aceptas y te comprometes a cumplir con los siguientes términos y condiciones."
+        canonicalUrl="/terminos-de-uso"
+      />
       <div className="pt-24 md:pt-32 pb-20">
         <div className="container mx-auto px-6">
           

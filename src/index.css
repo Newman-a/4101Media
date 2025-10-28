@@ -30,6 +30,42 @@
   background-color: transparent;
 }
 
-.card-d{
+/* 1. Scroll suave para toda la página */
+html {
+  scroll-behavior: smooth;
   
+  /* 2. Estilos de scrollbar para Firefox */
+  /* Define el color del pulgar (thumb) y del fondo (track) */
+  scrollbar-color: #ff6600 #1a1a1a; 
+  scrollbar-width: thin;
 }
+
+/* 3. Estilos de scrollbar para WebKit (Chrome, Safari, Edge) */
+
+/* Define el ancho del scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* Para scroll horizontal */
+}
+
+/* El fondo (track) del scrollbar */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Un gris oscuro, combina con el fondo negro */
+  border-radius: 5px;
+}
+
+/* El "pulgar" (thumb) o la barra que se mueve */
+::-webkit-scrollbar-thumb {
+  background-color: #ff6600; /* El color naranja de tu marca */
+  border-radius: 5px;
+  
+  /* Un pequeño borde para que no pegue directo al track */
+  border: 2px solid #1a1a1a;
+}
+
+/* Efecto al pasar el mouse sobre el pulgar */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #e65c00; /* Un naranja un poco más oscuro */
+}
+
+/* --- FIN: Estilos de Scroll Suave y Scrollbar Personalizado --- */

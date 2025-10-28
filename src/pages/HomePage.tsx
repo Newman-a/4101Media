@@ -1,65 +1,72 @@
-// src/pages/HomePage.tsx
+import React, { lazy, Suspense } from "react";
+import HeroSection from "@/components/HomePage/HeroSection";
 
-import React, { lazy, Suspense } from 'react';
-
-// =======================================================
-// 1. IMPORTACIONES CRÍTICAS (Se cargan inmediatamente)
-// =======================================================
-// Estos componentes suelen ser críticos para el LCP (Largest Contentful Paint)
-import HeroSection from '@/components/HomePage/HeroSection';
-
-
-// =======================================================
-// 2. IMPORTACIONES LAZY (Se cargan solo cuando son necesarias)
-// =======================================================
-// Estos componentes son candidatos ideales para carga diferida, 
-// ya que arrastran librerías grandes (como framer-motion) o están fuera del viewport inicial.
-
-const LazyStatsSection = lazy(() => import('@/components/HomePage/StatsSection'));
-const LazyClientsSection = lazy(() => import('@/components/HomePage/ClientsSection'));
-const LazyAboutSection = lazy(() => import('@/components/HomePage/AboutSection'));
-const LazyServicesHighlightSection = lazy(() => import('@/components/HomePage/ServicesHighlightSection'));
-const LazyContactSection = lazy(() => import('@/components/ContactSection'));
+const LazyStatsSection = lazy(
+  () => import("@/components/HomePage/StatsSection")
+);
+const LazyClientsSection = lazy(
+  () => import("@/components/HomePage/ClientsSection")
+);
+const LazyAboutSection = lazy(
+  () => import("@/components/HomePage/AboutSection")
+);
+const LazyServicesHighlightSection = lazy(
+  () => import("@/components/HomePage/ServicesHighlightSection")
+);
+const LazyContactSection = lazy(() => import("@/components/ContactSection"));
+import SEO from "@/components/SEO"; // 1. IMPORTAR EL COMPONENTE SEO
 
 
 const HomePage: React.FC = () => {
   return (
-    <div className=" text-white">
-      
-      {/* ------------------------------------------- */}
-      {/* SECCIÓN CRÍTICA: Se carga de inmediato */}
-      {/* ------------------------------------------- */}
+    <div className="text-white">
+      {/* 2. COLOCAR EL COMPONENTE AQUÍ ARRIBA */}
+      <SEO
+        title="Agencia de Marketing Digital y Desarrollo Web"
+        description="Potenciamos empresas y emprendedores con marketing digital, diseño y desarrollo web."
+        canonicalUrl="/"
+      />
       <HeroSection />
 
-      {/* ------------------------------------------- */}
-      {/* SECCIONES NO CRÍTICAS: Aplicamos Suspense y Lazy */}
-      {/* ------------------------------------------- */}
+      {/* ---------------------------------------------------- */}
+      {/* B. CONTENIDO RESTANTE (CON FONDO GRANULADO) */}
+      {/* Se aplica la clase de fondo a este nuevo contenedor. */}
+      {/* ---------------------------------------------------- */}
+      <div className="app-grainy-background">
+        <Suspense
+          fallback={
+            <div className="h-20 flex items-center justify-center">
+              Cargando estadísticas...
+            </div>
+          }
+        >
+          <LazyStatsSection />
+        </Suspense>
 
-      {/* * Suspense envuelve la sección y muestra un 'fallback' mientras el bundle de JS
-        * de LazyStatsSection (que incluye framer-motion.js) se descarga.
-      */}
-      <Suspense fallback={<div className="h-20 flex items-center justify-center">Cargando estadísticas...</div>}>
-        <LazyStatsSection />
-      </Suspense>
+        {/* Agrupamos las demás secciones que suelen estar fuera de la vista */}
+        <Suspense
+          fallback={
+            <div className="h-40 flex items-center justify-center">
+              Cargando secciones adicionales...
+            </div>
+          }
+        >
+          <LazyClientsSection />
+          <LazyAboutSection />
+          <LazyServicesHighlightSection />
+          {/* <PortfolioHighlightSection /> */}
 
-      {/* Agrupamos las demás secciones que suelen estar fuera de la vista */}
-      <Suspense fallback={<div className="h-40 flex items-center justify-center">Cargando secciones adicionales...</div>}>
-        <LazyClientsSection />
-        <LazyAboutSection />
-        <LazyServicesHighlightSection />
-        {/* <PortfolioHighlightSection /> */}
-
-        {/* Sección de Contacto Diferida */}
-        <div className="py-20 md:py-32 app-grainy-background ">
-          <div className="container mx-auto px-6 ">
-            <LazyContactSection 
-              title="Inicia tu Próximo Gran Proyecto"
-              subtitle="Nos encantaría escuchar sobre tus ideas y ayudarte a hacerlas realidad. Contáctanos para empezar."
-            />
+          {/* Sección de Contacto Diferida */}
+          <div className="py-20 md:py-32">
+            <div className="container mx-auto px-6 ">
+              <LazyContactSection
+                title="Inicia tu Próximo Gran Proyecto"
+                subtitle="Nos encantaría escuchar sobre tus ideas y ayudarte a hacerlas realidad. Contáctanos para empezar."
+              />
+            </div>
           </div>
-        </div>
-      </Suspense>
-      
+        </Suspense>
+      </div>
     </div>
   );
 };

@@ -1,8 +1,14 @@
 import React from 'react';
+import SEO from '@/components/SEO'; // 👈 1. IMPORTA TU COMPONENTE SEO
 
 const PoliticaDePrivacidad: React.FC = () => {
   return (
     <div className="app-grainy-background text-white min-h-screen">
+      <SEO
+        title="Política de Privacidad"
+        description="Conoce cómo 4101 Media recopila, utiliza y protege tu información personal. Tu privacidad es importante para nosotros."
+        canonicalUrl="/politica-de-privacidad"
+      />
       <div className="pt-24 md:pt-32 pb-20">
         <div className="container mx-auto px-6">
           

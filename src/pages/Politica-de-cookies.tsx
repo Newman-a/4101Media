@@ -1,8 +1,14 @@
 import React from 'react';
+import SEO from '@/components/SEO'; // IMPORTAR EL COMPONENTE SEO
 
 const PoliticaDeCookies: React.FC = () => {
   return (
     <div className="app-grainy-background text-white min-h-screen">
+      <SEO
+        title="Política de Cookies"
+        description="Esta política explica qué son las cookies, cómo las utilizamos en nuestro sitio web y cómo puedes gestionarlas."
+        canonicalUrl="/politica-de-cookies"
+      />
       <div className="pt-24 md:pt-32 pb-20">
         <div className="container mx-auto px-6">
           

@@ -4,7 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { TEAM_MEMBERS } from '@/utils/constants';
 import type { TeamMember } from '@/types/index';
-import CareersContactForm from './CareersContactForm'; // --- 1. IMPORTAR EL NUEVO COMPONENTE ---
+import CareersContactForm from '@/pages/CareersContactForm'; // --- 1. IMPORTAR EL NUEVO COMPONENTE ---
+import SEO from '@/components/SEO'; // 2. IMPORTAR EL COMPONENTE SEO
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +32,7 @@ const TeamPage: React.FC = () => {
     const teamGridRef = useRef<HTMLDivElement>(null);
 
     const membersToKeep = new Set([
-        'Cesar', 'Angelvis', 'Newman', 'Roberto', 'Arianna', 'Jeremi', 'Rebeca', 'Mariana',
+        'Cesar', 'Angelvis', 'Newman', 'Roberto', 'Arianna', 'Jeremi', 'Rebeca', 'Mariana', 'Emilys',
     ]);
 
     const filteredMembers = TEAM_MEMBERS.filter(member => membersToKeep.has(member.name));
@@ -51,6 +52,11 @@ const TeamPage: React.FC = () => {
 
     return (
         <div className="app-grainy-background text-white min-h-screen">
+            <SEO
+                title="Nuestro Equipo"
+                description="Profesionales apasionados y dedicados a transformar ideas en resultados extraordinarios."
+                canonicalUrl="/equipo"
+            />
             <div ref={containerRef} className="pt-24 md:pt-32 pb-20">
                 <div className="container mx-auto px-6">
                     {/* Sección del Equipo */}
@@ -63,10 +69,7 @@ const TeamPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div 
-                        ref={teamGridRef}
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 md:gap-x-8"
-                    >
+                    <div ref={teamGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 md:gap-x-8 ">
                         {filteredMembers.map((member: TeamMember) => (
                             <TeamMemberCard key={member.name} member={member} />
                         ))}

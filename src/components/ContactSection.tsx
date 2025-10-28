@@ -2,7 +2,8 @@
 
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import ReCAPTCHA from 'react-google-recaptcha';
+// 1. IMPORTACIÓN DE ReCAPTCHA ELIMINADA
+// import ReCAPTCHA from 'react-google-recaptcha';
 
 // --- Iconos (sin cambios) ---
 const IconUser = (props: React.SVGProps<SVGSVGElement>) => (<svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>);
@@ -21,7 +22,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   subtitle = "¿Tienes un proyecto en mente? Nos encantaría escucharlo."
 }) => {
   const form = useRef<HTMLFormElement>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null); // NUEVO: 3. Crear una Ref para reCAPTCHA
+  // 2. REF A ReCAPTCHA ELIMINADA
+  // const recaptchaRef = useRef<ReCAPTCHA>(null); 
 
   const [formData, setFormData] = useState({ name: '', company: '', phone: '', email: '', message: '' });
   const [status, setStatus] = useState('');
@@ -40,7 +42,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
     }
   };
 
-  // NUEVO: 4. Lógica de envío actualizada
+  // 3. LÓGICA DE ENVÍO SIMPLIFICADA
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -48,24 +50,24 @@ const ContactSection: React.FC<ContactSectionProps> = ({
     setStatus('');
     setError('');
 
-    // Obtener el token de reCAPTCHA
+    // 4. VERIFICACIÓN DE TOKEN Y OBTENCIÓN DE TOKEN ELIMINADAS
+    /*
     const token = recaptchaRef.current?.getValue();
-
     if (!token) {
-      // Si no hay token, mostrar error
       setError('Por favor, verifica que no eres un robot.');
       setIsSubmitting(false);
       return;
     }
+    */
 
-    // EmailJS espera el token bajo el nombre 'g-recaptcha-response'
+    // 5. PARÁMETROS DEL TEMPLATE SIN EL TOKEN
     const templateParams = {
         name: formData.name,
         company: formData.company,
         phone: formData.phone,
         email: formData.email,
         message: formData.message,
-        'g-recaptcha-response': token, // Añadir el token aquí
+        // 'g-recaptcha-response': token, // <-- Línea eliminada
     };
 
     emailjs.send(
@@ -75,20 +77,20 @@ const ContactSection: React.FC<ContactSectionProps> = ({
         'ia1fevkTobse8izwT'
     )
     .then((response) => {
-       console.log('SUCCESS!', response.status, response.text);
-       setIsSuccess(true);
-       setStatus('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
-       setFormData({ name: '', company: '', phone: '', email: '', message: '' });
-       setTimeout(() => setIsSuccess(false), 5000);
+        console.log('SUCCESS!', response.status, response.text);
+        setIsSuccess(true);
+        setStatus('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
+        setFormData({ name: '', company: '', phone: '', email: '', message: '' });
+        setTimeout(() => setIsSuccess(false), 5000);
     })
     .catch((err) => {
-       console.log('FAILED...', err);
-       setError('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+        console.log('FAILED...', err);
+        setError('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
     })
     .finally(() => {
-       // Resetear el reCAPTCHA sin importar si falló o no
-       recaptchaRef.current?.reset();
-       setIsSubmitting(false);
+        // 6. RESETEO DE ReCAPTCHA ELIMINADO
+        // recaptchaRef.current?.reset();
+        setIsSubmitting(false);
     });
   };
 
@@ -119,18 +121,19 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             <div className="relative"><IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="text" name="name" value={formData.name} onChange={handleChange} required className={`${inputBaseClasses} pl-10`} placeholder="Nombre y Apellido"/></div>
             <div className="relative"><IconOffice className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="text" name="company" value={formData.company} onChange={handleChange} className={`${inputBaseClasses} pl-10`} placeholder="Empresa (Opcional)"/></div>
             <div className="relative"><IconPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="tel" name="phone" value={formData.phone} onChange={handleChange} required maxLength={15} className={`${inputBaseClasses} pl-10`} placeholder="Teléfono"/></div>
-            <div className="relative"><IconMail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="email" name="email" value={formData.email} onChange={handleChange} required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Por favor, introduce una dirección de correo válida." className={`${inputBaseClasses} pl-10`} placeholder="Correo Electrónico"/></div>
+            <div className="relative"><IconMail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="email" name="email" value={formData.email} onChange={handleChange} required pattern="[a-z0-D._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Por favor, introduce una dirección de correo válida." className={`${inputBaseClasses} pl-10`} placeholder="Correo Electrónico"/></div>
             <div className="relative"><IconMessage className="absolute left-3 top-4 w-5 h-5 text-white/50 pointer-events-none" /><textarea name="message" rows={5} value={formData.message} onChange={handleChange} required className={`${inputBaseClasses} pl-10 resize-none`} placeholder="Cuéntanos sobre tu proyecto"></textarea></div>
           </div>
 
-          {/* NUEVO: 5. Añadir el componente ReCAPTCHA */}
-          <div className="mt-6">
+          {/* 7. COMPONENTE ReCAPTCHA ELIMINADO */}
+          {/* <div className="mt-6">
             <ReCAPTCHA
               ref={recaptchaRef}
-              sitekey="6LckBu4rAAAAAHercCf2bMEXOjYKerLOAGz1Kw-B" // <-- REEMPLAZA ESTO
-              theme="dark" // Para que coincida con tu web
+              sitekey="6LckBu4rAAAAAHercCf2bMEXOjYKerLOAGz1Kw-B" 
+              theme="dark"
             />
-          </div>
+          </div> 
+          */}
 
           <button
             type="submit"
@@ -148,7 +151,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
           </button>
           
           {status && !isSubmitting && <p className="mt-4 text-sm text-center text-green-400 animate-fadeIn">{status}</p>}
-          {/* El error de reCAPTCHA también se mostrará aquí */}
+          {/* El error genérico (por ejemplo, de red) aún se mostrará aquí */}
           {error && <p className="mt-4 text-sm text-center text-red-500 animate-fadeIn">{error}</p>}
         </form>
       </div>

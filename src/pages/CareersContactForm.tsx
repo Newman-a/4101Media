@@ -1,6 +1,9 @@
-import React, { useState, useRef } from 'react'; // Importar useRef
-import emailjs from '@emailjs/browser'; // 1. Importar EmailJS
-import ReCAPTCHA from 'react-google-recaptcha'; // 2. Importar ReCAPTCHA
+// src/pages/CareersContactForm.tsx
+
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser'; 
+// 1. IMPORTACIÓN DE ReCAPTCHA ELIMINADA
+// import ReCAPTCHA from 'react-google-recaptcha'; 
 
 // --- Iconos (sin cambios) ---
 const IconUser = (props: React.SVGProps<SVGSVGElement>) => (<svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>);
@@ -23,8 +26,8 @@ const AREAS_OF_INTEREST = [
 ];
 
 const CareersContactForm: React.FC = () => {
-    // 4. Añadir la Ref para reCAPTCHA
-    const recaptchaRef = useRef<ReCAPTCHA>(null); 
+    // 2. REF A ReCAPTCHA ELIMINADA
+    // const recaptchaRef = useRef<ReCAPTCHA>(null); 
     
     // El estado del formulario (sin cambios)
     const [formData, setFormData] = useState({
@@ -53,7 +56,7 @@ const CareersContactForm: React.FC = () => {
         }
     };
     
-    // 5. MODIFICAR LA FUNCIÓN handleSubmit
+    // 3. FUNCIÓN handleSubmit MODIFICADA
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -61,18 +64,17 @@ const CareersContactForm: React.FC = () => {
         setStatus('');
         setError('');
 
-        // Obtener el token de reCAPTCHA
+        // 4. VERIFICACIÓN DE TOKEN ELIMINADA
+        /*
         const token = recaptchaRef.current?.getValue();
-
         if (!token) {
-          // Si no hay token, mostrar error
           setError('Por favor, verifica que no eres un robot.');
           setIsSubmitting(false);
           return;
         }
+        */
 
-        // Crear el objeto de parámetros para EmailJS
-        // Debe coincidir con las variables de tu plantilla
+        // 5. PARÁMETROS DEL TEMPLATE SIMPLIFICADOS
         const templateParams = {
             fullName: formData.fullName,
             email: formData.email,
@@ -82,7 +84,7 @@ const CareersContactForm: React.FC = () => {
             proudProject: formData.proudProject,
             talentAcceleration: formData.talentAcceleration,
             passionTrend: formData.passionTrend,
-            'g-recaptcha-response': token, // Añadir el token de reCAPTCHA
+            // 'g-recaptcha-response': token, // <-- Línea eliminada
         };
 
         // Enviar el correo usando EmailJS
@@ -108,8 +110,8 @@ const CareersContactForm: React.FC = () => {
            setError('Error al enviar. Por favor, revisa los campos e inténtalo de nuevo.');
         })
         .finally(() => {
-           // Resetear el reCAPTCHA
-           recaptchaRef.current?.reset();
+           // 6. RESETEO DE ReCAPTCHA ELIMINADO
+           // recaptchaRef.current?.reset();
            setIsSubmitting(false);
         });
     };
@@ -129,19 +131,53 @@ const CareersContactForm: React.FC = () => {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* --- Campos de Contacto (sin cambios) --- */}
+                        {/* --- Campos de Contacto (CORREGIDOS) --- */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="relative"><label htmlFor="fullName" className="sr-only">Nombre Completo</label><IconUser className={iconClasses} /><input type="text" name="fullName" placeholder="Nombre Completo" required value={formData.fullName} onChange={handleChange} className={inputBaseClasses} /></div>
-                            <div className="relative"><label htmlFor="email" className="sr-only">Correo electronico</label><IconMail className={iconClasses} /><input type="email" name="email" placeholder="Correo electronico" required value={formData.email} onChange={handleChange} className={inputBaseClasses} /></div>
-                            <div className="relative"><label htmlFor="phone" className="sr-only">Teléfono</label><IconPhone className={iconClasses} /><input type="tel" name="phone" placeholder="Teléfono" required value={formData.phone} onChange={handleChange} className={inputBaseClasses} /></div>
-                            <div className="relative"><label htmlFor="portfolioLink" className="sr-only">Enlace a tu Portafolio o CV</label><IconLink className={iconClasses} /><input type="url" name="portfolioLink" placeholder="Enlace a tu Portafolio o CV" required value={formData.portfolioLink} onChange={handleChange} className={inputBaseClasses} /></div>
+                            {/* Nombre Completo */}
+                            <div className="relative">
+                                {/* htmlFor apunta al id */}
+                                <label htmlFor="fullName" className="sr-only">Nombre Completo</label>
+                                <IconUser className={iconClasses} />
+                                {/* id coincide con htmlFor */}
+                                <input type="text" id="fullName" name="fullName" placeholder="Nombre Completo" required value={formData.fullName} onChange={handleChange} className={inputBaseClasses} />
+                            </div>
+                            
+                            {/* Correo Electrónico */}
+                            <div className="relative">
+                                {/* htmlFor apunta al id */}
+                                <label htmlFor="email" className="sr-only">Correo electronico</label>
+                                <IconMail className={iconClasses} />
+                                {/* id coincide con htmlFor */}
+                                <input type="email" id="email" name="email" placeholder="Correo electronico" required value={formData.email} onChange={handleChange} className={inputBaseClasses} />
+                            </div>
+
+                            {/* Teléfono */}
+                            <div className="relative">
+                                {/* htmlFor apunta al id */}
+                                <label htmlFor="phone" className="sr-only">Teléfono</label>
+                                <IconPhone className={iconClasses} />
+                                {/* id coincide con htmlFor */}
+                                <input type="tel" id="phone" name="phone" placeholder="Teléfono" required value={formData.phone} onChange={handleChange} className={inputBaseClasses} />
+                            </div>
+
+                            {/* Enlace a Portafolio/CV */}
+                            <div className="relative">
+                                {/* htmlFor apunta al id */}
+                                <label htmlFor="portfolioLink" className="sr-only">Enlace a tu Portafolio o CV</label>
+                                <IconLink className={iconClasses} />
+                                {/* id coincide con htmlFor */}
+                                <input type="url" id="portfolioLink" name="portfolioLink" placeholder="Enlace a tu Portafolio o CV" required value={formData.portfolioLink} onChange={handleChange} className={inputBaseClasses} />
+                            </div>
                         </div>
 
-                        {/* --- Área de Interés (sin cambios) --- */}
+                        {/* --- Área de Interés (CORREGIDO) --- */}
                         <div className="relative">
+                            {/* htmlFor apunta al id */}
                             <label htmlFor="areaOfInterest" className="sr-only">Área de Interés</label>
                             <IconSparkles className={iconClasses} />
+                            {/* id coincide con htmlFor */}
                             <select 
+                                id="areaOfInterest"
                                 name="areaOfInterest" 
                                 required 
                                 value={formData.areaOfInterest} 
@@ -157,22 +193,38 @@ const CareersContactForm: React.FC = () => {
                             </select>
                         </div>
 
-                        {/* --- Preguntas Estratégicas (sin cambios) --- */}
-                        <div className="relative pt-2"><label htmlFor="proudProject" className="sr-only">Proyecto que más te enorgullece</label><IconPencil className={`${iconClasses} top-6`} /><textarea name="proudProject" placeholder="Describe el proyecto que más te enorgullece. ¿Qué lo hizo especial y qué rol jugaste en él?" required rows={4} value={formData.proudProject} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea></div>
-                        <div className="relative"><label htmlFor="talentAcceleration" className="sr-only">Cómo tu talento puede acelerar nuestro crecimiento</label><IconPencil className={`${iconClasses} top-6`} /><textarea name="talentAcceleration" placeholder="Cuéntanos cómo tu talento puede acelerar nuestro crecimiento y el de nuestros clientes." required rows={4} value={formData.talentAcceleration} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea></div>
-                        <div className="relative"><label htmlFor="passionTrend" className="sr-only">Tendencia que te apasiona</label><IconPencil className={`${iconClasses} top-6`} /><textarea name="passionTrend" placeholder="¿Qué tendencia del marketing digital o la producción audiovisual te apasiona más y por qué?" required rows={4} value={formData.passionTrend} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea></div>
+                        {/* --- Preguntas Estratégicas (CORREGIDAS) --- */}
                         
-                        {/* --- 6. AÑADIR reCAPTCHA --- */}
-                        <div className="pt-4">
-                          <ReCAPTCHA
-                            ref={recaptchaRef}
-                            sitekey="6LckBu4rAAAAAHercCf2bMEXOjYKerLOAGz1Kw-B" // <-- REEMPLAZA ESTO
-                            theme="dark" // Tema oscuro para que coincida
-                          />
+                        {/* Proyecto que más te enorgullece */}
+                        <div className="relative pt-2">
+                            {/* htmlFor apunta al id */}
+                            <label htmlFor="proudProject" className="sr-only">Proyecto que más te enorgullece</label>
+                            <IconPencil className={`${iconClasses} top-6`} />
+                            {/* id coincide con htmlFor */}
+                            <textarea id="proudProject" name="proudProject" placeholder="Describe el proyecto que más te enorgullece. ¿Qué lo hizo especial y qué rol jugaste en él?" required rows={4} value={formData.proudProject} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea>
+                        </div>
+
+                        {/* Cómo tu talento puede acelerar nuestro crecimiento */}
+                        <div className="relative">
+                            {/* htmlFor apunta al id */}
+                            <label htmlFor="talentAcceleration" className="sr-only">Cómo tu talento puede acelerar nuestro crecimiento</label>
+                            <IconPencil className={`${iconClasses} top-6`} />
+                            {/* id coincide con htmlFor */}
+                            <textarea id="talentAcceleration" name="talentAcceleration" placeholder="Cuéntanos cómo tu talento puede acelerar nuestro crecimiento y el de nuestros clientes." required rows={4} value={formData.talentAcceleration} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea>
                         </div>
                         
-                        {/* --- Botón de Envío y Feedback --- */}
-                        <div className="pt-2"> {/* Ajustado el padding-top */}
+                        {/* Tendencia que te apasiona */}
+                        <div className="relative">
+                            {/* htmlFor apunta al id */}
+                            <label htmlFor="passionTrend" className="sr-only">Tendencia que te apasiona</label>
+                            <IconPencil className={`${iconClasses} top-6`} />
+                            {/* id coincide con htmlFor */}
+                            <textarea id="passionTrend" name="passionTrend" placeholder="¿Qué tendencia del marketing digital o la producción audiovisual te apasiona más y por qué?" required rows={4} value={formData.passionTrend} onChange={handleChange} className={`${inputBaseClasses} resize-none`}></textarea>
+                        </div>
+                        
+                        {/* 2. RECAPTCHA ELIMINADO */}
+
+                        <div className="pt-2"> 
                             <button type="submit" className={`w-full text-white font-semibold py-3 px-6 rounded-full transition-colors duration-300 transform hover:scale-105 flex items-center justify-center disabled:opacity-75 disabled:cursor-not-allowed ${buttonClass}`} disabled={isSubmitting || isSuccess}>
                                 {isSubmitting ? (
                                   <span className="flex items-center"><svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Enviando...</span>

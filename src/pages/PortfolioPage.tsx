@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react'; // Importamos useGSAP
 import { PORTFOLIO_PROJECTS } from '@/utils/constants';
 import type { Project } from '@/types/index';
 import ContactSection from '@/components/ContactSection'; // 1. IMPORTAR EL COMPONENTE DE CONTACTO
+import SEO from '@/components/SEO'; // 2. IMPORTAR EL COMPONENTE SEO
 
 // Registrar el plugin de GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -54,6 +55,11 @@ const PortfolioPage: React.FC = () => {
 
     return (
         <div className="app-grainy-background text-white min-h-screen">
+            <SEO
+                title="Nuestro Portafolio"
+                description="Explora una selección de proyectos de video y marketing que hemos realizado para nuestros clientes."
+                canonicalUrl="/porfolio"
+            />
             <div ref={containerRef} className="pt-24 md:pt-32 pb-20"> {/* Aplicamos la ref principal */}
                 <div className="container mx-auto px-6">
                     {/* Header - Añadimos una clase para seleccionarlo */}

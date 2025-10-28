@@ -32,7 +32,7 @@ const AboutSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24 app-grainy-background">
+    <section className="py-24">
       
       {/* 💡 CAMBIO 1: Cambiamos la distribución a 6/6 (50%/50%) en desktop */}
       <div ref={containerRef} className="container mx-auto px-6 grid md:grid-cols-12 gap-x-12 gap-y-12 items-center">

@@ -1,7 +1,6 @@
 // constants.ts (Versión final con LEGAL_LINKS)
 
 import { NavLink, TeamMember, Value, Service, Project, Client } from '@/types/index';
-import deltaLogoPath from '/clients/delta-logo.webp';
 
 export const NAV_LINKS: NavLink[] = [
     { name: 'Inicio', path: '/' },
@@ -13,23 +12,23 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: 'Cesar', role: 'CEO, Editor y Filmmaker', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }, // --> Actualizado
-  { name: 'Angelvis', role: 'Director de Desarrollao & Trafficker', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }, // --> Actualizado
-  { name: 'Newman', role: 'Desarrollador & Trafficker', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }, // --> Actualizado
-  { name: 'Roberto', role: 'Desarrollador & Trafficker', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }, // --> Actualizado
+  { name: 'Cesar', role: 'CEO, Editor y Filmmaker', imageUrl: '/team/cesar_team.webp' }, // --> Actualizado
+  { name: 'Angelvis', role: 'Director de Desarrollao & Trafficker', imageUrl: '/team/angelvis_team.webp' }, // --> Actualizado
+  { name: 'Newman', role: 'Desarrollador & Trafficker', imageUrl: '/team/newman_team.webp' }, // --> Actualizado
+  { name: 'Roberto', role: 'Desarrollador & Trafficker', imageUrl: '/team/roberto_team.webp' }, // --> Actualizado
   { name: 'Gerardo', role: 'Director de Edición', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Andrea', role: 'Diseñadora & editora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Emilys', role: 'Editora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
+  { name: 'Emilys', role: 'Editora', imageUrl: '/team/emilys_team.webp' },
   { name: 'Franco', role: 'Editor', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Tito', role: 'Editor', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Arianna', role: 'Diseñadora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
+  { name: 'Arianna', role: 'Diseñadora', imageUrl: '/team/arianna_team.webp' },
   { name: 'Bianca', role: 'Diseñadora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Jeremi', role: 'Filmmaker & Editor', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' }, // --> Actualizado
+  { name: 'Jeremi', role: 'Filmmaker & Editor', imageUrl: '/team/jeremi_team.webp' }, // --> Actualizado
   { name: 'Evana', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Andrea', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Maria', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Mariana', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Rebeca', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
+  { name: 'Mariana', role: 'Community Manager', imageUrl: '/team/mariana_team.webp' },
+  { name: 'Rebeca', role: 'Community Manager', imageUrl: '/team/rebeca_team.webp' },
 ];
 
 export const COMPANY_VALUES: Value[] = [
@@ -153,13 +152,16 @@ export const PORTFOLIO_PROJECTS: Project[] = [
 // REEMPLAZA CLIENT_LOGOS CON ESTO:
 export const CLIENTS: Client[] = [
   // 2. USA la propiedad 'logoUrl'
-  { name: 'Ledicia',}, 
-  { name: 'Costa Azul', },
-  // Si no tienen logo, simplemente omite la propiedad, y el código usará el texto.
-  { name: 'Delta box', logoUrl: deltaLogoPath }, 
-  { name: 'Eco club' },
-  { name: 'Novaco' },
-  { name: 'Dimaco' },
+  { name: 'Ledicia', logoUrl: '/clients/ledicia-logo.webp' }, 
+  { name: 'Costa Azul', }, 
+  { name: 'Delta box', logoUrl: '/clients/delta-logo.webp' }, 
+  { name: 'Eco club', logoUrl: '/clients/ecoclub-logo.webp' },
+  { name: 'Novaco', logoUrl: '/clients/novaco-logo.webp' },
+  { name: 'Dimaco', logoUrl: '/clients/dimaco-logo.webp' },
+  { name: 'Vene imagen', logoUrl: '/clients/veneimagen-logo.webp' },
+  { name: 'JBIKE', logoUrl: '/clients/jbike-logo.webp' },
+  { name: 'Catgurt', logoUrl: '/clients/catgurt-logo.webp' },
+  { name: 'Aerocav Venezuela', logoUrl: '/clients/aerocavvenezuela-logo.webp' },
 ];
 
 // src/utils/constants.ts

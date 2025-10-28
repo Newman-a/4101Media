@@ -7,7 +7,7 @@ const StatsSection: React.FC = () => {
   return (
     // 💡 CAMBIO 1: Reemplazamos py-20 por la clase de altura 'h-[30vh]' 
     // y usamos flex para centrar el contenido verticalmente.
-    <section className="h-[40vh] app-grainy-background flex items-center justify-center">
+    <section className="h-[40vh]  flex items-center justify-center">
       {/* 1. Añadimos los keyframes y la clase de animación (dejamos el style aquí si no puedes usar un archivo CSS) */}
       <style>
         {`
