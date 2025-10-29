@@ -7,36 +7,32 @@
 /* En tu archivo CSS principal (ej. src/index.css) */
 
 .logo-white-filter {
-    /* Convierte a escala de grises (opcional, pero ayuda a la consistencia) */
-    filter: grayscale(100%) 
-            /* Invierte los colores (blanco se hace negro, negro se hace blanco) */
-            invert(100%) 
-            /* Aumenta el brillo y contraste para asegurar que sea blanco puro */
-            brightness(100%) 
-            contrast(100%);
+  /* Convierte a escala de grises (opcional, pero ayuda a la consistencia) */
+  filter: grayscale(100%)
+    /* Invierte los colores (blanco se hace negro, negro se hace blanco) */
+    invert(100%)
+    /* Aumenta el brillo y contraste para asegurar que sea blanco puro */
+    brightness(100%) contrast(100%);
 }
 
 /* Este CSS debe estar en tu archivo global */
-.app-grainy-background
-{
-  
+.app-grainy-background {
   filter: contrast(120%) brightness(100%);
-  background: 
-	conic-gradient(from 23deg at 48% 48%, rgba(12, 12, 12, 0.76)),
-	url("data:image/svg+xml,%3Csvg viewBox='0 0 285 285' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background: conic-gradient(from 23deg at 48% 48%, rgba(12, 12, 12, 0.76)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 285 285' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
-  
-.clients-none{
+
+.clients-none {
   background-color: transparent;
 }
 
 /* 1. Scroll suave para toda la página */
 html {
   scroll-behavior: smooth;
-  
+
   /* 2. Estilos de scrollbar para Firefox */
   /* Define el color del pulgar (thumb) y del fondo (track) */
-  scrollbar-color: #ff6600 #1a1a1a; 
+  scrollbar-color: #ff6600 #1a1a1a;
   scrollbar-width: thin;
 }
 
@@ -58,7 +54,7 @@ html {
 ::-webkit-scrollbar-thumb {
   background-color: #ff6600; /* El color naranja de tu marca */
   border-radius: 5px;
-  
+
   /* Un pequeño borde para que no pegue directo al track */
   border: 2px solid #1a1a1a;
 }
@@ -69,3 +65,14 @@ html {
 }
 
 /* --- FIN: Estilos de Scroll Suave y Scrollbar Personalizado --- */
+
+.MaskImg {
+  -webkit-mask-image: linear-gradient(black 80%, transparent);
+
+  mask-image: linear-gradient(black 80%, transparent);
+  cursor: pointer;
+}
+
+.desactivar {
+  user-select: none;
+}

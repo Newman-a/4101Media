@@ -1,3 +1,4 @@
+import type { ElementType } from "react"; // --> AÑADE ESTA IMPORTACIÓN
 
 export interface NavLink {
   name: string;
@@ -5,23 +6,31 @@ export interface NavLink {
 }
 
 export interface TeamMember {
-  name: string;
-  role: string;
-  imageUrl: string;
+  name: string;
+  role: string;
+  imageUrl: string;
+  imageClassName?: string; // <--- AÑADE ESTA LÍNEA
 }
+
+// En: src/types/index.ts
+
 
 export interface Value {
   title: string;
   description: string;
+  icon: ElementType; // --> AÑADE ESTA LÍNEA
 }
 
+// ... otros types que puedas tener
+
 export interface Service {
-    title: string;
-    description: string;
-    steps: {
-        name: string;
-        details: string[];
-    }[];
+    title: string;
+    description: string;
+    steps: {
+        name: string;
+        details: string[];
+    }[];
+    icon: ElementType; // --> AÑADE ESTA LÍNEA
 }
 
 export interface Project {

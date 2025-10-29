@@ -31,7 +31,7 @@ const StatsSection: React.FC = () => {
       {/* 💡 CAMBIO 2: Removemos el padding vertical 'py-20' del section y lo dejamos al contenedor interno
           para que no interfiera con el 30vh, y centramos el contenido con 'flex' */}
       <div className="container mx-auto px-6 ">
-        <div className="grid grid-cols-3 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           
           {/* Tarjeta 1 */}
           <div className="animate-stat-card" style={{ animationDelay: '0.2s' }}>

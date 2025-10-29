@@ -31,7 +31,7 @@ const ClientsSection: React.FC = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="">
+    <section ref={sectionRef} className="py-24">
       
       {/* El título sigue igual */}
       <div className="container mx-auto px-6">
@@ -42,7 +42,7 @@ const ClientsSection: React.FC = () => {
 
       {/* 3. REEMPLAZAR LogoLoop CON Marquee */}
       <Marquee 
-        pauseOnHover={true}
+        pauseOnHover={false}
         speed={70}
         gradient={true} // Reemplaza 'fadeOut'
         gradientColor="[0, 0, 0]" // Color del difuminado (negro, de tu fondo)
@@ -65,7 +65,8 @@ const ClientsSection: React.FC = () => {
                 alt={`${client.name} Logo`}
                 // Esta clase ('max-h-full') se asegura de que la imagen
                 // crezca hasta el tamaño del 'div' padre que cambiaste.
-                className="max-h-full w-auto object-contain" 
+                className="max-h-full w-auto object-contain " 
+                draggable="false"
               />
             ) : (
               <span 

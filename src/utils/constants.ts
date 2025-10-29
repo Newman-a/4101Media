@@ -2,6 +2,51 @@
 
 import { NavLink, TeamMember, Value, Service, Project, Client } from '@/types/index';
 
+import {
+  FaShieldAlt,      // Para Honestidad
+  FaSeedling,       // Para Humildad
+  FaLightbulb,      // Para Creatividad
+  FaRegHandshake,   // Para Empatía
+  FaCheckDouble,    // Para Responsabilidad
+  FaUsers           // Para Trabajo en Equipo
+} from "react-icons/fa";
+
+// ... (El resto de tus constantes como NAV_LINKS, TEAM_MEMBERS...)
+
+// --- 2. USA LOS ICONOS CORRECTOS EN EL ARRAY ---
+export const COMPANY_VALUES: Value[] = [
+    { 
+      title: 'Honestidad', 
+      description: 'Confianza, integridad y respeto mutuo. Ofrecemos productos de calidad a precios justos y cumplimos nuestros compromisos.',
+      icon: FaShieldAlt // <-- Icono correcto
+    },
+    { 
+      title: 'Humildad', 
+      description: 'Reconocemos errores, escuchamos y valoramos las opiniones de los demás. Buscamos el aprendizaje continuo.',
+      icon: FaSeedling // <-- Icono correcto
+    },
+    { 
+      title: 'Creatividad e Innovación', 
+      description: 'Originalidad, fluidez y flexibilidad. Generamos valor a través de la conexión emocional y la resolución de problemas.',
+      icon: FaLightbulb // <-- Icono correcto
+    },
+    { 
+      title: 'Empatía y Orientación al Cliente', 
+      description: 'Escuchamos con mente abierta, sin prejuicios, para comprender y conectar con las necesidades de nuestros clientes.',
+      icon: FaRegHandshake // <-- Icono correcto
+    },
+    { 
+      title: 'Responsabilidad', 
+      description: 'Compromiso, excelencia en el cumplimiento de acuerdos y proactividad para la prevención y aceptación de consecuencias.',
+      icon: FaCheckDouble // <-- Icono correcto
+    },
+    { 
+      title: 'Trabajo en Equipo', 
+      description: 'Metas comunes, comunicación y pensamiento crítico para lograr la satisfacción del cliente y la alta moral de los empleados.',
+      icon: FaUsers // <-- Icono correcto
+    },
+];
+
 export const NAV_LINKS: NavLink[] = [
     { name: 'Inicio', path: '/' },
     { name: 'Nosotros', path: '/nosotros' },
@@ -13,7 +58,7 @@ export const NAV_LINKS: NavLink[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   { name: 'Cesar', role: 'CEO, Editor y Filmmaker', imageUrl: '/team/cesar_team.webp' }, // --> Actualizado
-  { name: 'Angelvis', role: 'Director de Desarrollao & Trafficker', imageUrl: '/team/angelvis_team.webp' }, // --> Actualizado
+  { name: 'Angelvis', role: 'Director de Desarrollo & Trafficker', imageUrl: '/team/angelvis_team.webp', imageClassName: '' }, // --> Actualizado
   { name: 'Newman', role: 'Desarrollador & Trafficker', imageUrl: '/team/newman_team.webp' }, // --> Actualizado
   { name: 'Roberto', role: 'Desarrollador & Trafficker', imageUrl: '/team/roberto_team.webp' }, // --> Actualizado
   { name: 'Gerardo', role: 'Director de Edición', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
@@ -31,18 +76,18 @@ export const TEAM_MEMBERS: TeamMember[] = [
   { name: 'Rebeca', role: 'Community Manager', imageUrl: '/team/rebeca_team.webp' },
 ];
 
-export const COMPANY_VALUES: Value[] = [
-    { title: 'Honestidad', description: 'Confianza, integridad y respeto mutuo. Ofrecemos productos de calidad a precios justos y cumplimos nuestros compromisos.'},
-    { title: 'Humildad', description: 'Reconocemos errores, escuchamos y valoramos las opiniones de los demás. Buscamos el aprendizaje continuo.'},
-    { title: 'Creatividad e Innovación', description: 'Originalidad, fluidez y flexibilidad. Generamos valor a través de la conexión emocional y la resolución de problemas.'},
-    { title: 'Empatía y Orientación al Cliente', description: 'Escuchamos con mente abierta, sin prejuicios, para comprender y conectar con las necesidades de nuestros clientes.'},
-    { title: 'Responsabilidad', description: 'Compromiso, excelencia en el cumplimiento de acuerdos y proactividad para la prevención y aceptación de consecuencias.'},
-    { title: 'Trabajo en Equipo', description: 'Metas comunes, comunicación y pensamiento crítico para lograr la satisfacción del cliente y la alta moral de los empleados.'},
-];
+// --- ICONOS PARA SERVICES_DATA ---
+import {
+  FaVideo,
+  FaChartLine,
+  FaLaptopCode,
+  FaMousePointer
+} from "react-icons/fa";
 
 export const SERVICES_DATA: Service[] = [
     {
         title: 'Producción Audiovisual',
+        icon: FaVideo,
         description: 'Desde la concepción de la idea hasta la entrega final, manejamos todos los aspectos de la producción de video para crear contenido visual impactante y efectivo.',
         steps: [
             {
@@ -61,6 +106,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         title: 'Marketing Digital y Creatividad',
+icon: FaChartLine,
         description: 'Desarrollamos estrategias de marketing digital integrales para conectar a las marcas con su audiencia, acelerando su crecimiento en el ámbito digital.',
         steps: [
             {
@@ -79,7 +125,8 @@ export const SERVICES_DATA: Service[] = [
     },
     // ----- 👇 COMIENZAN LOS NUEVOS SERVICIOS AÑADIDOS -----
     {
-        title: 'Desarrollo Web a la Medida',
+        title: 'Desarrollo Web',
+icon: FaLaptopCode,
         description: 'Creamos sitios web potentes y atractivos que convierten visitantes en clientes. Desde plataformas robustas en WordPress hasta soluciones personalizadas desde cero, construimos la presencia digital que tu marca necesita.',
         steps: [
           {
@@ -94,7 +141,7 @@ export const SERVICES_DATA: Service[] = [
             name: 'Desarrollo y Programación',
             details: [
               'Desarrollo experto en WordPress para una fácil gestión de contenido.',
-              'Programación a medida con tecnologías modernas (HTML, CSS, JS, React).',
+              'Programación a medida con tecnologías modernas (HTML, CSS, JS, React, NextJS).',
               'Integración de funcionalidades específicas y APIs de terceros.'
             ]
           },
@@ -110,6 +157,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         title: 'Trafficker Digital y Estrategia de Campañas',
+icon: FaMousePointer,
         description: 'Atraemos tráfico cualificado a tu negocio y maximizamos tu retorno de inversión. Diseñamos, implementamos y optimizamos campañas publicitarias en las plataformas clave para alcanzar a tu audiencia ideal.',
         steps: [
           {

@@ -4,20 +4,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { TEAM_MEMBERS } from '@/utils/constants';
 import type { TeamMember } from '@/types/index';
-import CareersContactForm from '@/pages/CareersContactForm'; // --- 1. IMPORTAR EL NUEVO COMPONENTE ---
-import SEO from '@/components/SEO'; // 2. IMPORTAR EL COMPONENTE SEO
+import CareersContactForm from '@/pages/CareersContactForm';
+import SEO from '@/components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// --- AQUÍ ESTÁ LA CORRECCIÓN ---
 const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
     <div className="group text-center team-member-card">
         <div className="overflow-hidden rounded-lg">
             <img 
                 src={member.imageUrl} 
                 alt={member.name} 
-                className="w-full h-auto object-cover aspect-square 
+                // Aplicamos 'object-contain' por defecto (móvil) y 'md:object-cover' para escritorio
+                className="w-full object-contain md:object-cover aspect-square 
                            transform transition-transform duration-300 ease-in-out 
-                           group-hover:scale-105"
+                           group-hover:scale-105 bg-[#ffffff86] MaskImg"
             />
         </div>
         <div className="mt-4">
@@ -27,17 +29,20 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
     </div>
 );
 
+
 const TeamPage: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const teamGridRef = useRef<HTMLDivElement>(null);
 
+    // ... (filteredMembers logic se mantiene igual) ...
     const membersToKeep = new Set([
         'Cesar', 'Angelvis', 'Newman', 'Roberto', 'Arianna', 'Jeremi', 'Rebeca', 'Mariana', 'Emilys',
     ]);
-
     const filteredMembers = TEAM_MEMBERS.filter(member => membersToKeep.has(member.name));
 
+
     useGSAP(() => {
+        // ... (Animaciones GSAP se mantienen igual) ...
         gsap.from('.header-block', {
             opacity: 0, y: 50, duration: 1, ease: 'power3.out',
             scrollTrigger: { trigger: '.header-block', start: 'top 85%', once: true, }
@@ -57,10 +62,10 @@ const TeamPage: React.FC = () => {
                 description="Profesionales apasionados y dedicados a transformar ideas en resultados extraordinarios."
                 canonicalUrl="/equipo"
             />
-            <div ref={containerRef} className="pt-24 md:pt-32 pb-20">
-                <div className="container mx-auto px-6">
-                    {/* Sección del Equipo */}
-                    <div className="header-block text-center mb-16">
+            <div ref={containerRef}>
+                
+                <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 ">
+                    <div className="header-block text-center relative z-10 px-6">
                         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter">
                             Conoce a Nuestro <span className="text-[#ff6600]">Equipo</span>
                         </h1>
@@ -68,22 +73,26 @@ const TeamPage: React.FC = () => {
                             Profesionales apasionados y dedicados a transformar ideas en resultados extraordinarios.
                         </p>
                     </div>
+                </header>
 
-                    <div ref={teamGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 md:gap-x-8 ">
-                        {filteredMembers.map((member: TeamMember) => (
-                            <TeamMemberCard key={member.name} member={member} />
-                        ))}
+                <div className="pb-20">
+                    <div className="container mx-auto px-6">
+                        
+                        {/* El grid 'grid-cols-2' para móvil funciona bien con 'object-contain' */}
+                        <div ref={teamGridRef} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 md:gap-x-8 pt-20 md:pt-24">
+                            {filteredMembers.map((member: TeamMember) => (
+                                <TeamMemberCard key={member.name} member={member} />
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                {/* --- 2. SECCIÓN DEL FORMULARIO DE POSTULACIONES --- */}
-                {/* Separador visual */}
-                <div className="container mx-auto px-6">
-                    <hr className="border-t-2 border-white/10 my-20 md:my-24" />
+                    {/* --- Sección del Formulario --- */}
+                    <div className="container mx-auto px-6">
+                        <hr className="border-t-2 border-white/10 my-20 md:my-24" />
+                    </div>
+                    
+                    <CareersContactForm />
                 </div>
-                
-                <CareersContactForm />
-
             </div>
         </div>
     );
