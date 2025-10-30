@@ -1,96 +1,66 @@
-import React, { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import React from "react";
+// import { useRef } from "react"; // <--- Adiós
+// import { gsap } from "gsap"; // <--- Adiós
+// import { ScrollTrigger } from "gsap/ScrollTrigger"; // <--- Adiós
+// import { useGSAP } from "@gsap/react"; // <--- Adiós
 import { SERVICES_DATA } from "@/utils/constants";
 import type { Service } from "@/types/index";
 import ContactSection from "@/components/ContactSection";
 import SEO from "@/components/SEO";
+import AnimateOnScroll from "@/components/AnimateOnScroll"; // <--- ¡Hola!
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger); // <--- Adiós
 
 const ServicesPage: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      // Animación del encabezado
-      gsap.from(".header-block", {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".header-block",
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      // Animación de las tarjetas de servicio
-      gsap.from(".service-card", {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2, 
-        scrollTrigger: {
-          trigger: ".services-container", 
-          start: "top 80%", 
-          once: true,
-        },
-      });
-    },
-    { scope: containerRef }
-  );
+  // const containerRef = useRef<HTMLDivElement>(null); // <--- Adiós
+  // useGSAP( ... ); // <--- Adiós a todo el hook
 
   return (
-    <div className="app-grainy-background text-white min-h-screen">
+    <div className=" text-white min-h-screen ">
       <SEO
         title="Nuestros Servicios"
         description="Ofrecemos soluciones integrales para potenciar tu presencia y crecimiento en el entorno digital."
         canonicalUrl="/servicios"
       />
-      
-      <div ref={containerRef}>
-        
-        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 ">
-            <div className="header-block text-center relative z-10 px-6">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter">
-                  Nuestros <span className="text-[#ff6600]">Servicios</span>
-                </h1>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
-                  Ofrecemos soluciones integrales para potenciar tu presencia y
-                  crecimiento en el entorno digital.
-                </p>
-            </div>
+
+      {/* <div ref={containerRef}> // <--- Adiós al 'ref' */}
+      <div className="">
+        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
+          
+          {/* 1. Reemplazamos el 'div' del header con 'AnimateOnScroll' */}
+          <AnimateOnScroll className="header-block text-center relative z-10 px-6">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter">
+              Nuestros <span className="text-[#ff6600]">Servicios</span>
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
+              Ofrecemos soluciones integrales para potenciar tu presencia y
+              crecimiento en el entorno digital.
+            </p>
+          </AnimateOnScroll>
         </header>
 
         <div className="pb-20 ">
           <div className="container mx-auto px-6">
-            
             <div className="services-container space-y-16 pt-20 md:pt-24">
               
-              {/* --- INICIO DEL BLOQUE MODIFICADO CON ICONOS --- */}
               {SERVICES_DATA.map((service: Service, index: number) => {
-                // 1. Obtenemos el componente de icono desde el objeto
                 const IconComponent = service.icon;
 
                 return (
-                  <div
+                  // 2. Reemplazamos el 'div' de la tarjeta por 'AnimateOnScroll'
+                  //    Añadimos el 'delay' para replicar el 'stagger: 0.2'
+                  <AnimateOnScroll
                     key={service.title}
-                    className={`service-card rounded-2xl p-8 md:p-12 border border-white/10`}
+                    delay={index * 200} // stagger: 0.2s = 200ms
+                    className={`service-card rounded-2xl p-8 md:p-12 border border-white/10 bg-[#171717]`}
                   >
-                    {/* 2. Cambiado a items-start para alinear en la parte superior */}
-                    <div className="grid md:grid-cols-5 gap-8 items-start">
+                    <div className="grid md:grid-cols-5 gap-8 items-start ">
                       <div
                         className={`md:col-span-2 ${
                           index % 2 === 0 ? "md:order-1" : "md:order-2"
                         }`}
                       >
-                        {/* 3. Renderizamos el icono */}
                         <IconComponent className="text-5xl mb-4 text-[#ff6600]" />
-
                         <h2 className="text-3xl font-bold text-[#ff6600] mb-4">
                           {service.title}
                         </h2>
@@ -119,14 +89,13 @@ const ServicesPage: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </AnimateOnScroll>
                 );
               })}
-              {/* --- FIN DEL BLOQUE MODIFICADO --- */}
-
+              
             </div>
           </div>
-          
+
           {/* --- Sección de Contacto --- */}
           <div className="container mx-auto px-6 mt-20 md:mt-32">
             <ContactSection

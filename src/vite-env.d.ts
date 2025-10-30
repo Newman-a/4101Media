@@ -12,6 +12,11 @@ declare module '*.mp4' {
   export default src;
 }
 
+declare module '*.webm' {
+  const src: string;
+  export default src;
+}
+
 // 🚀 SOLUCIÓN AL ERROR TS2307: Declaración para imágenes PNG
 declare module '*.png' {
   const content: string;

@@ -107,7 +107,7 @@ const Header: React.FC = () => {
 
             {/* Menú móvil */}
             <div
-                className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ease-in-out ${
+                className={`lg:hidden fixed inset-0 z-[100]   transition-opacity duration-300 ease-in-out ${
                     isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                 } bg-black/50 backdrop-blur-sm`}
                 onClick={closeMenu}
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
                     }`}
                     onClick={(e) => e.stopPropagation()} 
                 >
-                    <div className="container px-6 py-4 flex justify-between items-center h-20 border-b border-gray-700">
+                    <div className="container px-6 py-4  flex justify-between items-center h-20 border-b border-gray-700">
                          {/* Logo en menú móvil */}
                          <RouterNavLink to="/" onClick={closeMenu} className="text-2xl font-bold text-white flex items-center">
                             <img src={LogoUrl} alt="4101 media logo" className="h-10 w-auto" />

@@ -51,7 +51,7 @@ const PortfolioPage: React.FC = () => {
     }, { scope: containerRef });
 
     return (
-        <div className="app-grainy-background text-white min-h-screen">
+        <div className=" text-white min-h-screen">
             <SEO
                 title="Nuestro Portafolio"
                 description="Explora una selección de proyectos de video y marketing que hemos realizado para nuestros clientes."
@@ -61,7 +61,7 @@ const PortfolioPage: React.FC = () => {
             <div ref={containerRef}>
 
                 {/* 2. SE AÑADE EL WRAPPER <header> */}
-                <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 ">
+                <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
                     {/* 3. SE MANTIENE EL CONTENIDO ORIGINAL (quitando mb-12) */}
                     <div className="header-block text-center relative z-10 px-6">
                         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter">
@@ -74,11 +74,11 @@ const PortfolioPage: React.FC = () => {
                 </header>
 
                 {/* 4. SE AÑADE UN DIV WRAPPER PARA EL CONTENIDO */}
-                <div className="pb-20">
+                <div className="pb-20 ">
                     <div className="container mx-auto px-6">
                         
                         {/* 5. SE AÑADE PADDING TOP AL PRIMER ELEMENTO DE CONTENIDO */}
-                        <div className="flex justify-center space-x-4 mb-12 pt-20 md:pt-24">
+                        <div className="flex justify-center space-x-4 mb-12 pt-20 md:pt-24 ">
                             {categories.map(category => (
                                 <button
                                     key={category}
@@ -96,12 +96,12 @@ const PortfolioPage: React.FC = () => {
 
                         <div 
                             ref={projectsGridRef}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
                         >
                             {filteredProjects.map((project: Project) => (
                                 <div 
                                     key={project.title} 
-                                    className="group relative overflow-hidden rounded-lg project-card"
+                                    className="group relative overflow-hidden rounded-lg project-card "
                                 >
                                     <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

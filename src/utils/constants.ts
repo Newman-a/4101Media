@@ -217,19 +217,19 @@ export const CLIENTS: Client[] = [
 export const MASONRY_ITEMS = [
   {
     id: "p1",
-    img: "",
+    img: "ceo.webp",
     url: "/porfolio", // O un enlace específico a un proyecto
-    height: 400,
+    height: 700,
   },
   {
     id: "p2",
-    img: "",
-    url: "/porfolio",
-    height: 250,
+    img: "filmmaker.webp",
+    url: "https://www.youtube.com/watch?v=bpY6gGjjy5I&list=RDu2ah9tWTkmk&index=4",
+    height: 450,
   },
   {
     id: "p3",
-    img: "",
+    img: "https://picsum.photos/seed/m3/600/900",
     url: "/porfolio",
     height: 350,
   },

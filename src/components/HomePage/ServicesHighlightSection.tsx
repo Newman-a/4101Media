@@ -33,7 +33,7 @@ const ServicesHighlightSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24">
+    <section className="py-24 f-homepage-Services">
       {/* 4. Colocamos la ref en el div que envuelve TODO el contenido a animar */}
       <div ref={containerRef} className="container mx-auto px-6">
         
@@ -44,7 +44,7 @@ const ServicesHighlightSection: React.FC = () => {
         </div>
         
         {/* Este es el segundo hijo (elementsToAnimate[1]) */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8  ">
           <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300">
             <h3 className="text-2xl font-bold text-white">Producción Audiovisual</h3>
             <p className="mt-4 text-white/70">Desde la concepción de la idea hasta la entrega final, creamos contenido visual impactante y efectivo que cautiva a tu audiencia.</p>

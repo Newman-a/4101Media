@@ -16,6 +16,10 @@ const LazyServicesHighlightSection = lazy(
 const LazyContactSection = lazy(() => import("@/components/ContactSection"));
 import SEO from "@/components/SEO"; // 1. IMPORTAR EL COMPONENTE SEO
 
+const PortfolioHighlightSection = lazy(
+  () => import("@/components/HomePage/PortfolioHighlightSection")
+);
+
 
 const HomePage: React.FC = () => {
   return (
@@ -32,7 +36,7 @@ const HomePage: React.FC = () => {
       {/* B. CONTENIDO RESTANTE (CON FONDO GRANULADO) */}
       {/* Se aplica la clase de fondo a este nuevo contenedor. */}
       {/* ---------------------------------------------------- */}
-      <div className="app-grainy-background">
+      <div className="]">
         <Suspense
           fallback={
             <div className="h-20 flex items-center justify-center">
@@ -54,7 +58,7 @@ const HomePage: React.FC = () => {
           <LazyClientsSection />
           <LazyAboutSection />
           <LazyServicesHighlightSection />
-          {/* <PortfolioHighlightSection /> */}
+          <PortfolioHighlightSection />
 
           {/* Sección de Contacto Diferida */}
           <div className="py-20 md:py-32">

@@ -98,14 +98,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   const inputBaseClasses = "w-full bg-black border-white/20 rounded-md py-3 px-4 text-white focus:ring-[#ff6600] focus:border-[#ff6600] border";
 
   return (
-    <div>
+    <div >
       {/* ... (Sección de título e info de contacto sin cambios) ... */}
-      <div className="text-center mb-16">
+      <div className=" text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter">{title}</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">{subtitle}</p>
       </div>
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 bg-black p-8 md:p-12 rounded-2xl border border-white/10">
-        <div>
+        <div >
           <h2 className="text-2xl font-bold text-[#ff6600]">Información de Contacto</h2>
           <p className="mt-4 text-white/70">Ponte en contacto con nosotros a través de los siguientes medios o utiliza el formulario.</p>
           <ul className="mt-8 space-y-4 text-white/80">
@@ -116,7 +116,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
         
         <form ref={form} onSubmit={handleSubmit}>
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             {/* ... (Inputs sin cambios) ... */}
             <div className="relative"><IconUser className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="text" name="name" value={formData.name} onChange={handleChange} required className={`${inputBaseClasses} pl-10`} placeholder="Nombre y Apellido"/></div>
             <div className="relative"><IconOffice className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" /><input type="text" name="company" value={formData.company} onChange={handleChange} className={`${inputBaseClasses} pl-10`} placeholder="Empresa (Opcional)"/></div>

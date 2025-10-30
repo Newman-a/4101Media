@@ -122,10 +122,10 @@ const CareersContactForm: React.FC = () => {
     const iconClasses = "absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none";
 
     return (
-        <div className="py-20">
+        <div className="py-20 ">
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-12 ">
                         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">Únete a Nuestro Equipo</h2>
                         <p className="mt-4 text-lg text-white/70">Buscamos talento apasionado por la creatividad y los resultados.</p>
                     </div>

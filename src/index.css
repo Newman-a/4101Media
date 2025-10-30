@@ -76,3 +76,75 @@ html {
 .desactivar {
   user-select: none;
 }
+
+/*
+ * 1. Definimos el estado inicial de los elementos.
+ * Están ocultos y ligeramente desplazados hacia abajo.
+ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  /* * 2. Definimos la transición. Esta será la animación.
+   * Durará 1 segundo (como tu GSAP) y tendrá un 'ease-out'.
+   */
+  transition: opacity 0.3s ease-out, transform 1s ease-out;
+}
+
+/* * 3. Esta es la clase que añadiremos con JavaScript (React) 
+ * cuando el elemento esté visible. Vuelve a su estado final.
+ */
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.f-homepage {
+  background: linear-gradient(45deg, lab(0 0 0), lab(1.43 3.88 2.23), lab(11.4 18.4 17.5), lab(62.31% 55.01 71.34), lab(0 0 0));
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.f-homepage-Services {
+  background: linear-gradient(45deg, lab(0 0 0), lab(1.43 3.88 2.23), lab(11.4 18.4 17.5), lab(62.31% 55.01 71.34), lab(0 0 0));
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.f-homepageS {
+  background: linear-gradient(45deg, lab(0 0 0), lab(1.43 3.88 2.23), lab(59.11% 63.58 69.7 / 0.432), lab(0% 0 0), lab(0 0 0));
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.contenedor-video {
+  /* ... otras propiedades ... */
+  position: relative;
+  z-index: 1; /* Asegura que esté por encima de la sección negra */
+}
+
+.contenedor-video::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Ajusta la altura del desvanecido */
+  background: linear-gradient(to top, #000000 0%, transparent 100%); 
+  /* #000000 debe ser el color de la sección inferior */
+  z-index: 2; 
+}
+
+.glass-menu-mobile {
+  background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.orange-drop-shadow {
+  filter: drop-shadow(0 4px 40px rgba(250, 100, 0, 0.9));
+}
+
+.orange-shadow{
+  box-shadow: 0  5px 50px rgba(255, 102, 0, 0.7);
+}

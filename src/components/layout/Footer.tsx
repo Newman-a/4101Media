@@ -36,8 +36,8 @@ const SOCIAL_LINKS = [
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-black text-white border-t border-white/10 px-6 py-12">
-            <div className="container mx-auto">
+        <footer className="bg-black text-white border-t border-white/10 px-6 py-12 ">
+            <div className="container mx-auto ">
                 {/* ---------------------------------------------------- */}
                 {/* --- SECCIÓN PRINCIPAL DE 4 COLUMNAS --- */}
                 {/* Usamos grid para móviles y flex en md para 4 columnas */}
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
 
                     {/* ---------------------------------------------------- */}
                     {/* Contenedor de las 3 Columnas de Enlaces (Se ajusta en móvil para ser más compacto) */}
-                    <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-3 md:w-3/4">
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 md:grid-cols-3 md:w-3/4 ">
 
                         {/* Columna 2: Navegación */}
                         <div className="flex flex-col items-center md:items-start space-y-3">

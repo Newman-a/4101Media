@@ -31,11 +31,11 @@ const ClientsSection: React.FC = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="py-24">
+    <section ref={sectionRef} className="py-24 f-homepage">
       
       {/* El título sigue igual */}
       <div className="container mx-auto px-6">
-        <p className="text-center text-3xl md:text-4xl font-bold text-[#ff6600] tracking-wider mb-10">
+        <p className="text-center text-3xl md:text-4xl font-bold text-[#ffffff] tracking-wider mb-10">
           CONFIAN EN NOSOTROS
         </p>
       </div>
@@ -57,7 +57,7 @@ const ClientsSection: React.FC = () => {
           <div 
             key={index}
             // Ajusta el 'mx-10' (40px) para el espaciado
-            className="mx-10 flex h-40 items-center justify-center" // <--- CAMBIA 'h-20'
+            className="mx-10 flex h-40 items-center justify-center " // <--- CAMBIA 'h-20'
           >
             {client.logoUrl ? (
               <img 
@@ -72,7 +72,7 @@ const ClientsSection: React.FC = () => {
               <span 
                 // Si aumentas mucho la altura, quizás también
                 // quieras aumentar el tamaño del texto (ej: text-3xl)
-                className="text-2xl font-semibold uppercase tracking-widest text-white/70"
+                className="text-2xl font-semibold uppercase tracking-widest text-white/70 "
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {client.name}

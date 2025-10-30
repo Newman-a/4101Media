@@ -5,7 +5,7 @@ import { SplitText } from 'gsap/SplitText';
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon';
 import ShinyText from '@/components/HomePage/common/ShinyText';
 // 👈 IMPORTACIÓN DEL VIDEO: Asumiendo que el archivo está en src/assets/
-import heroVideo from '/4101mediafondo.mp4'; 
+import heroVideo from '/4101mediafondo.webm'; 
 
 // Register the SplitText plugin
 gsap.registerPlugin(SplitText);
@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
 
   return (
     // 'relative' y 'overflow-hidden' ya están correctos para el contenedor del video
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 brand-dark ">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 brand-dark contenedor-video">
       
       {/* AÑADIDO: Video de Fondo */}
       <video
@@ -47,13 +47,13 @@ const HeroSection: React.FC = () => {
         className="absolute top-0 left-0 w-full h-full object-cover z-0" 
       >
 
-        <source src={heroVideo} type="video/mp4" />
+        <source src={heroVideo} type="video/webm" />
         Tu navegador no soporta el tag de video.
       </video>
 
       {/* Dark background layer */}
       {/* Subimos la opacidad si el video es muy claro, para mejorar la legibilidad del texto blanco */}
-      <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
+      <div className="absolute inset-0  opacity-60 z-10"></div>
 
       {/* Main content */}
       <div className="container mx-auto text-center z-20">
