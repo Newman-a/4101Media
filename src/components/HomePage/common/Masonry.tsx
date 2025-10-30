@@ -239,7 +239,7 @@ const Masonry: React.FC<MasonryProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full" // <- Eliminamos 'h-full'
+      className="relative w-full" // <- Eliminamos 'h-full'
       style={{ height: `${containerHeight}px` }} // <- Aplicamos la altura
     >
       {grid.map(item => (

@@ -27,7 +27,7 @@ const PortfolioHighlightSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24">
+    <section className="py-24 h-full">
       <div ref={containerRef} className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -35,7 +35,7 @@ const PortfolioHighlightSection: React.FC = () => {
           </h2>
         </div>
 
-        <div style={{ height: '800px' }}> {/* Contenedor con altura para que la galería se muestre */}
+        <div> {/* Contenedor con altura para que la galería se muestre */}
           <Masonry
             items={MASONRY_ITEMS}
             ease="power4.out"
