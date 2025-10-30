@@ -104,6 +104,19 @@ html {
   mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
+.f-homepage-new {
+  background: linear-gradient(45deg, 
+    lab(0 0 0), 
+    lab(1.43 3.88 2.23), 
+    lab(11.4 18.4 17.5), 
+    lab(62.18% 52.24 70.92 / 0.37), 
+    lab(0 0 0), 
+    lab(0 0 0)
+  );
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
 .f-homepage-Services {
   background: linear-gradient(45deg, lab(0 0 0), lab(1.43 3.88 2.23), lab(11.4 18.4 17.5), lab(62.31% 55.01 71.34), lab(0 0 0));
   mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);

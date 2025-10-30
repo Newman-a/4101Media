@@ -1,6 +1,7 @@
 // constants.ts (Versión final con LEGAL_LINKS)
 
 import { NavLink, TeamMember, Value, Service, Project, Client } from '@/types/index';
+import type { Course } from "@/types/index";
 
 import {
   FaShieldAlt,      // Para Honestidad
@@ -10,6 +11,50 @@ import {
   FaCheckDouble,    // Para Responsabilidad
   FaUsers           // Para Trabajo en Equipo
 } from "react-icons/fa";
+
+// ... (cerca de otras importaciones de react-icons)
+import {
+  // ...tus otros iconos...
+       // Para Desarrollo Web
+  FaPalette,        // Para Diseño Web
+  FaFilm,           // Para Premiere Pro
+  FaCameraRetro,    // Para Filmmaking
+           // Para Community Manager
+  FaMagic           // Para After Effects
+} from "react-icons/fa";
+
+export const ACADEMY_COURSES: Course[] = [
+  {
+    title: 'Desarrollo Web Básico',
+    description: 'Próximamente...',
+    icon: FaLaptopCode
+  },
+  {
+    title: 'Diseño Web Básico',
+    description: 'Próximamente...',
+    icon: FaPalette
+  },
+  {
+    title: 'Premiere Pro Básico',
+    description: 'Próximamente...',
+    icon: FaFilm
+  },
+  {
+    title: 'Filmmaking Básico',
+    description: 'Próximamente...',
+    icon: FaCameraRetro
+  },
+  {
+    title: 'Community Manager desde Cero',
+    description: 'Próximamente...',
+    icon: FaUsers
+  },
+  {
+    title: 'After Effects Medio/Avanzado',
+    description: 'Próximamente...',
+    icon: FaMagic
+  },
+];
 
 // ... (El resto de tus constantes como NAV_LINKS, TEAM_MEMBERS...)
 
@@ -47,13 +92,16 @@ export const COMPANY_VALUES: Value[] = [
     },
 ];
 
+// src/utils/constants.ts
+
 export const NAV_LINKS: NavLink[] = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Nosotros', path: '/nosotros' },
-    { name: 'Servicios', path: '/servicios' },
-    { name: 'Equipo', path: '/equipo' },
-    { name: 'Porfolio', path: '/porfolio' },
-    { name: 'Contacto', path: '/contacto' },
+  { name: 'Inicio', path: '/' },
+  { name: 'Nosotros', path: '/nosotros' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Academia', path: '/academia' }, // <-- AÑADIR ESTA LÍNEA
+  { name: 'Equipo', path: '/equipo' },
+  { name: 'Porfolio', path: '/porfolio' },
+  { name: 'Contacto', path: '/contacto' },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -217,40 +265,76 @@ export const CLIENTS: Client[] = [
 export const MASONRY_ITEMS = [
   {
     id: "p1",
-    img: "ceo.webp",
+    img: "/gallery/1.avif",
     url: "/porfolio", // O un enlace específico a un proyecto
-    height: 700,
+    height: 550,
   },
   {
     id: "p2",
-    img: "filmmaker.webp",
+    img: "/gallery/2.avif",
     url: "https://www.youtube.com/watch?v=bpY6gGjjy5I&list=RDu2ah9tWTkmk&index=4",
-    height: 450,
+    height: 650,
   },
   {
     id: "p3",
-    img: "https://picsum.photos/seed/m3/600/900",
+    img: "/gallery/3.avif",
     url: "/porfolio",
-    height: 350,
+    height: 550,
   },
   {
     id: "p4",
-    img: "",
+    img: "/gallery/4.avif",
     url: "/porfolio",
-    height: 300,
+    height: 500,
   },
   {
     id: "p5",
-    img: "",
+    img: "/gallery/5.avif",
     url: "/porfolio",
-    height: 450,
+    height: 550,
   },
   {
     id: "p6",
-    img: "",
+    img: "/gallery/6.avif",
     url: "/porfolio",
-    height: 280,
+    height: 400,
   },
+  {
+    id: "p7",
+    img: "/gallery/7.avif",
+    url: "/porfolio",
+    height: 600,
+  },
+  {
+    id: "p8",
+    img: "/gallery/8.avif",
+    url: "/porfolio",
+    height: 400,
+  },
+  {
+    id: "p9",
+    img: "/gallery/9.avif",
+    url: "/porfolio",
+    height: 500,
+  },
+  {
+    id: "p10",
+    img: "/gallery/10.avif",
+    url: "/porfolio",
+    height: 750,
+  },
+  {
+    id: "p11",
+    img: "/gallery/11.avif",
+    url: "/porfolio",
+    height: 650,
+  },
+  {
+    id: "p12",
+    img: "/gallery/12.avif",
+    url: "/porfolio",
+    height: 600,
+  }
 ];
 
 // Definición de enlaces legales (NUEVA EXPORTACIÓN)

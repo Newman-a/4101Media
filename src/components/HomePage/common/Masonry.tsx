@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
+// --- (Los hooks 'useMedia', 'useMeasure' y 'preloadImages' no cambian) ---
+
 const useMedia = (queries: string[], values: number[], defaultValue: number): number => {
   const get = () => values[queries.findIndex(q => matchMedia(q).matches)] ?? defaultValue;
 
@@ -44,6 +46,8 @@ const preloadImages = async (urls: string[]): Promise<void> => {
     )
   );
 };
+
+// --- (Las interfaces 'Item', 'GridItem' y 'MasonryProps' no cambian) ---
 
 interface Item {
   id: string;
@@ -92,6 +96,7 @@ const Masonry: React.FC<MasonryProps> = ({
   const [imagesReady, setImagesReady] = useState(false);
 
   const getInitialPosition = (item: GridItem) => {
+    // ... (Esta función no cambia)
     const containerRect = containerRef.current?.getBoundingClientRect();
     if (!containerRect) return { x: item.x, y: item.y };
 
@@ -124,27 +129,41 @@ const Masonry: React.FC<MasonryProps> = ({
     preloadImages(items.map(i => i.img)).then(() => setImagesReady(true));
   }, [items]);
 
-  const grid = useMemo<GridItem[]>(() => {
-    if (!width) return [];
+  // ▼▼▼▼▼ MODIFICACIÓN 1: El useMemo ahora devuelve [grid, containerHeight] ▼▼▼▼▼
+  const [grid, containerHeight] = useMemo((): [GridItem[], number] => {
+    // Si no hay ancho, devuelve un array vacío y altura 0
+    if (!width) return [[], 0];
+
     const colHeights = new Array(columns).fill(0);
     const gap = 16;
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
-    return items.map(child => {
+    // Renombramos 'grid' a 'gridItems' para poder devolverlo
+    const gridItems: GridItem[] = items.map(child => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gap);
-      const height = child.height / 2;
+      const height = child.height / 2; // Respetamos tu lógica de dividir la altura
       const y = colHeights[col];
 
       colHeights[col] += height + gap;
       return { ...child, x, y, w: columnWidth, h: height };
     });
+
+    // ▼▼▼▼▼ MODIFICACIÓN 2: Calculamos la altura máxima y la devolvemos ▼▼▼▼▼
+    const maxHeight = Math.max(...colHeights);
+    // Restamos el 'gap' final para que la altura sea exacta
+    const totalHeight = maxHeight > 0 ? maxHeight - gap : 0;
+
+    return [gridItems, totalHeight];
+    // ▲▲▲▲▲ FIN DE LAS MODIFICACIONES EN useMemo ▲▲▲▲▲
+
   }, [columns, items, width]);
 
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
+    // ... (Esta función no cambia)
     if (!imagesReady) return;
 
     grid.forEach((item, index) => {
@@ -186,6 +205,7 @@ const Masonry: React.FC<MasonryProps> = ({
   }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
+    // ... (Esta función no cambia)
     if (scaleOnHover) {
       gsap.to(`[data-key="${id}"]`, {
         scale: hoverScale,
@@ -200,6 +220,7 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   const handleMouseLeave = (id: string, element: HTMLElement) => {
+    // ... (Esta función no cambia)
     if (scaleOnHover) {
       gsap.to(`[data-key="${id}"]`, {
         scale: 1,
@@ -213,8 +234,14 @@ const Masonry: React.FC<MasonryProps> = ({
     }
   };
 
+
+  // ▼▼▼▼▼ MODIFICACIÓN 3: Aplicamos la altura calculada al div contenedor ▼▼▼▼▼
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    <div
+      ref={containerRef}
+      className="relative w-full h-full" // <- Eliminamos 'h-full'
+      style={{ height: `${containerHeight}px` }} // <- Aplicamos la altura
+    >
       {grid.map(item => (
         <div
           key={item.id}
@@ -237,6 +264,7 @@ const Masonry: React.FC<MasonryProps> = ({
       ))}
     </div>
   );
+  // ▲▲▲▲▲ FIN DE LA MODIFICACIÓN EN EL JSX ▲▲▲▲▲
 };
 
 export default Masonry;

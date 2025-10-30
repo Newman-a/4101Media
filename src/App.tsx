@@ -21,6 +21,7 @@ const PoliticaDePrivacidad = lazy(
   () => import("@/pages/Politica-de-privacidad")
 );
 const PoliticaDeCookies = lazy(() => import("@/pages/Politica-de-cookies"));
+const AcademyPage = lazy(() => import("@/pages/AcademyPage")); // <-- AÑADIR ESTA LÍNEA
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -86,6 +87,7 @@ const App: React.FC = () => {
               path="/Politica-de-cookies"
               element={<PoliticaDeCookies />}
             />
+            <Route path="/academia" element={<AcademyPage />} /> {/* <-- AÑADIR ESTA LÍNEA */}
 
             {/* 💡 RUTA DE CAPTURA 404: Debe ser la última ruta. */}
             <Route path="*" element={<NotFoundPage />} />

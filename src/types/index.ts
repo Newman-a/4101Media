@@ -44,3 +44,11 @@ export interface Client {
   name: string;
   logoUrl?: string;
 }
+
+// types/index.ts
+// ... (otros tipos)
+export interface Course{
+  title: string;
+  description: string;
+  icon: React.ElementType; // O IconType si lo tienes definido
+}

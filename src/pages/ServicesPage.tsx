@@ -25,7 +25,7 @@ const ServicesPage: React.FC = () => {
 
       {/* <div ref={containerRef}> // <--- Adiós al 'ref' */}
       <div className="">
-        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
+        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage-new">
           
           {/* 1. Reemplazamos el 'div' del header con 'AnimateOnScroll' */}
           <AnimateOnScroll className="header-block text-center relative z-10 px-6">
