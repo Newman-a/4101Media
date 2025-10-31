@@ -37,6 +37,10 @@ export interface Project {
   title: string;
   category: string;
   imageUrl: string;
+  client?: string;
+  description: string;
+  videoUrl?: string;
+  siteUrl?: string; // <-- AÑADE ESTA LÍNEA
 }
 
 // En tu archivo types.ts

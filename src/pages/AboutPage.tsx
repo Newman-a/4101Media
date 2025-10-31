@@ -25,7 +25,7 @@ const AboutPage: React.FC = () => {
 
       {/* No necesitamos el 'ref' aquí */}
       <div>
-        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
+        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage-new">
           
           {/* 1. Usamos el wrapper en el header-block */}
           <AnimateOnScroll className="text-center relative z-10 px-6">

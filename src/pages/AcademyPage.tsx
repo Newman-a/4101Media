@@ -18,7 +18,7 @@ const AcademyPage: React.FC = () => {
       />
 
       <div>
-        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
+        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage-new">
           <AnimateOnScroll className="text-center relative z-10 px-6">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter inline-flex flex-wrap justify-center items-center gap-x-3">
               <span>Nuestra </span>

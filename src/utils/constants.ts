@@ -105,23 +105,23 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { name: 'Cesar', role: 'CEO, Editor y Filmmaker', imageUrl: '/team/cesar_team.webp' }, // --> Actualizado
-  { name: 'Angelvis', role: 'Director de Desarrollo & Trafficker', imageUrl: '/team/angelvis_team.webp', imageClassName: '' }, // --> Actualizado
-  { name: 'Newman', role: 'Desarrollador & Trafficker', imageUrl: '/team/newman_team.webp' }, // --> Actualizado
-  { name: 'Roberto', role: 'Desarrollador & Trafficker', imageUrl: '/team/roberto_team.webp' }, // --> Actualizado
+  { name: 'Cesar Arteaga', role: 'CEO, Editor y Filmmaker', imageUrl: '/team/cesar_team.webp' }, // --> Actualizado
+  { name: 'Angelvis Yanez', role: 'Director de Desarrollo & Trafficker', imageUrl: '/team/angelvis_team.webp', imageClassName: '' }, // --> Actualizado
+  { name: 'Newman Acosta', role: 'Desarrollador & Trafficker', imageUrl: '/team/newman_team.webp' }, // --> Actualizado
+  { name: 'Roberto Calderón', role: 'Desarrollador & Trafficker', imageUrl: '/team/roberto_team.webp' }, // --> Actualizado
   { name: 'Gerardo', role: 'Director de Edición', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Andrea', role: 'Diseñadora & editora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Emilys', role: 'Editora', imageUrl: '/team/emilys_team.webp' },
+  { name: 'Emilys Calderón', role: 'Editora', imageUrl: '/team/emilys_team.webp' },
   { name: 'Franco', role: 'Editor', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Tito', role: 'Editor', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Arianna', role: 'Diseñadora', imageUrl: '/team/arianna_team.webp' },
   { name: 'Bianca', role: 'Diseñadora', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Jeremi', role: 'Filmmaker & Editor', imageUrl: '/team/jeremi_team.webp' }, // --> Actualizado
+  { name: 'Jeremi Mora', role: 'Filmmaker & Editor', imageUrl: '/team/jeremi_team.webp' }, // --> Actualizado
   { name: 'Evana', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Andrea', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Maria', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
-  { name: 'Mariana', role: 'Community Manager', imageUrl: '/team/mariana_team.webp' },
-  { name: 'Rebeca', role: 'Community Manager', imageUrl: '/team/rebeca_team.webp' },
+  { name: 'Mariana Vera', role: 'Community Manager', imageUrl: '/team/mariana_team.webp' },
+  { name: 'Rebeca Puerta', role: 'Community Manager', imageUrl: '/team/rebeca_team.webp' },
 ];
 
 // --- ICONOS PARA SERVICES_DATA ---
@@ -236,13 +236,73 @@ icon: FaMousePointer,
     }
 ];
 
+// --- 👇 EDITA ESTE ARRAY ---
 export const PORTFOLIO_PROJECTS: Project[] = [
-  { title: 'Campaña "Lanzamiento X"', category: 'Video', imageUrl: 'https://picsum.photos/seed/p1/600/400' },
-  { title: 'Video Corporativo "TechCorp"', category: 'Video', imageUrl: 'https://picsum.photos/seed/p2/600/400' },
-  { title: 'Estrategia Redes Sociales "Moda Viva"', category: 'Marketing', imageUrl: 'https://picsum.photos/seed/p3/600/400' },
-  { title: 'Anuncios "GastroFest"', category: 'Marketing', imageUrl: 'https://picsum.photos/seed/p4/600/400' },
-  { title: 'Documental "Naturaleza"', category: 'Video', imageUrl: 'https://picsum.photos/seed/p5/600/400' },
-  { title: 'Campaña SEO "Global Finance"', category: 'Marketing', imageUrl: 'https://picsum.photos/seed/p6/600/400' },
+  {
+    title: 'Cápsula Educativa "Rayos-X vs. Tomografía"',
+    category: 'Marketing',
+    imageUrl: '/projects/veneimagen.avif',
+    client: 'VENEIMAGEN',
+    description: 'Producción de video corto (cápsula informativa) para pauta en Meta Ads. La Dra. Guadarrama explica la diferencia entre Rayos-X y Tomografía, posicionando a Veneimagen como autoridad y educando a pacientes potenciales.',
+    videoUrl: 'https://www.youtube.com/embed/F8bUQUC6238'
+  },
+  {
+    title: 'Campaña "El Repartidor Tentado"',
+    category: 'Marketing',
+    imageUrl: '/projects/ledicia.avif',
+    client: 'Ledicia',
+    description: 'Creación de contenido vertical (Reel/TikTok) enfocado en humor para la marca de postres "Ledicia". El video busca generar viralidad y engagement, mostrando el producto como "irresistible" a través de un skit cómico.',
+    videoUrl: 'https://www.youtube.com/embed/ayqLssG43zU'
+  },
+  {
+    title: 'CC "Fan Fest Vinotinto"',
+    category: 'Marketing',
+    imageUrl: '/projects/cc.avif',
+    client: 'C.C. Costa Azul / Arkangel Service',
+    description: 'Producción y cobertura de evento "Fan Fest" para la transmisión de partidos de la Vinotinto. El proyecto incluyó instalación de pantalla LED gigante, sonido profesional, animación en vivo y dinámicas de premiación para los asistentes, logrando una exitosa activación de marca en alianza con Polar.',
+    videoUrl: 'https://www.youtube.com/embed/Qkz7xLqwFn0'
+  },
+  // { 
+  //   title: 'Estrategia Redes Sociales "Moda Viva"', 
+  //   category: 'Marketing', 
+  //   imageUrl: 'https://picsum.photos/seed/p3/600/400',
+  //   client: 'Moda Viva',
+  //   description: 'Desarrollo e implementación de una estrategia de contenido para "Moda Viva", enfocada en aumentar el engagement y las ventas online.',
+  //   // Sin videoUrl, el modal mostrará la imagen
+  // },
+  // { 
+  //   title: 'Anuncios "GastroFest"', 
+  //   category: 'Marketing', 
+  //   imageUrl: 'https://picsum.photos/seed/p4/600/400',
+  //   client: 'GastroFest',
+  //   description: 'Campañas de anuncios pagados en Meta y Google para el festival "GastroFest", logrando un ROAS (Retorno de la Inversión Publicitaria) de 5x.',
+  //   videoUrl: 'https://www.youtube.com/embed/9bZkp7q19f0' // Ejemplo 3
+  // },
+  // { 
+  //   title: 'Documental "Naturaleza"', 
+  //   category: 'Video', 
+  //   imageUrl: 'https://picsum.photos/seed/p5/600/400',
+  //   client: 'Canal Verde',
+  //   description: 'Producción y post-producción de un corto documental sobre la biodiversidad local para "Canal Verde".',
+  //   // Sin videoUrl
+  // },
+  // { 
+  //   title: 'Campaña SEO "Global Finance"', 
+  //   category: 'Marketing', 
+  //   imageUrl: 'https://picsum.photos/seed/p6/600/400',
+  //   client: 'Global Finance',
+  //   description: 'Estrategia de SEO técnico y de contenidos que posicionó a "Global Finance" en el top 3 de búsquedas clave para su sector.',
+  //   // Sin videoUrl
+  // },
+  // { 
+  //   title: 'Sitio Web "EcoAventura"', 
+  //   category: 'Web', 
+  //   imageUrl: 'https://picsum.photos/seed/p7/600/400', // Reemplaza con tu imagen
+  //   client: 'EcoAventura Tours',
+  //   description: 'Diseño y desarrollo de un sitio web de reservas turísticas, construido con React y Tailwind CSS, enfocado en la velocidad y la experiencia de usuario móvil.',
+  //   siteUrl: 'https://www.google.com' // <-- AÑADE LA URL REAL AQUÍ
+  //   // Ojo: No añadas 'videoUrl'
+  // },
 ];
 
 // REEMPLAZA CLIENT_LOGOS CON ESTO:

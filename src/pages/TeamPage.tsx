@@ -20,7 +20,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
         alt={member.name} 
         className="w-full object-contain md:object-cover aspect-square
                    transform transition-transform duration-300 ease-in-out 
-                   group-hover:scale-105 bg-[#171717] MaskImg"
+                   group-hover:scale-105 bg-[#d1d1d1] MaskImg"
       />
     </div>
     <div className="mt-4">
@@ -36,7 +36,7 @@ const TeamPage: React.FC = () => {
   // const teamGridRef = useRef<HTMLDivElement>(null); // <--- Adiós
 
   const membersToKeep = new Set([
-    'Cesar', 'Angelvis', 'Newman', 'Roberto', 'Arianna', 'Jeremi', 'Rebeca', 'Mariana', 'Emilys',
+    'Cesar Arteaga', 'Angelvis Yanez', 'Newman Acosta', 'Roberto Calderón', 'Arianna', 'Jeremi Mora', 'Rebeca Puerta', 'Mariana Vera', 'Emilys Calderón',
   ]);
   const filteredMembers = TEAM_MEMBERS.filter(member => membersToKeep.has(member.name));
 
@@ -53,7 +53,7 @@ const TeamPage: React.FC = () => {
       {/* <div ref={containerRef}> // <--- Adiós al 'ref' */}
       <div>
         
-        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage">
+        <header className="relative w-full h-[500px] md:h-[60vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32 f-homepage-new">
           
           {/* 1. Envolvemos el header-block */}
           <AnimateOnScroll className="header-block text-center relative z-10 px-6">
