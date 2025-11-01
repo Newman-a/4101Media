@@ -5,7 +5,7 @@ import { SplitText } from 'gsap/SplitText';
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon';
 import ShinyText from '@/components/HomePage/common/ShinyText';
 // 👈 IMPORTACIÓN DEL VIDEO: Asumiendo que el archivo está en src/assets/
-import heroVideo from '/home.mp4'; 
+import heroVideo from '/home.webm'; 
 
 // Register the SplitText plugin
 gsap.registerPlugin(SplitText);
@@ -47,7 +47,7 @@ const HeroSection: React.FC = () => {
         className="absolute top-0 left-0 w-full h-full object-cover z-0 overlay-video-dark" 
       >
 
-        <source src={heroVideo} type="video/mp4" />
+        <source src={heroVideo} type="video/webm" />
         Tu navegador no soporta el tag de video.
       </video>
 

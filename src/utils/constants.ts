@@ -122,6 +122,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   { name: 'Maria', role: 'Community Manager', imageUrl: 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' },
   { name: 'Mariana Vera', role: 'Community Manager', imageUrl: '/team/mariana_team.webp' },
   { name: 'Rebeca Puerta', role: 'Community Manager', imageUrl: '/team/rebeca_team.webp' },
+  { name: 'Leonel Guerrero', role: 'Desarrollador', imageUrl: '/team/leonel_team.webp' },
 ];
 
 // --- ICONOS PARA SERVICES_DATA ---
@@ -389,12 +390,6 @@ export const MASONRY_ITEMS = [
     url: "/porfolio",
     height: 650,
   },
-  {
-    id: "p12",
-    img: "/gallery/12.avif",
-    url: "/porfolio",
-    height: 600,
-  }
 ];
 
 // Definición de enlaces legales (NUEVA EXPORTACIÓN)
