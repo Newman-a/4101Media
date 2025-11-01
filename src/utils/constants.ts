@@ -260,7 +260,7 @@ export const PORTFOLIO_PROJECTS: Project[] = [
     imageUrl: '/projects/cc.avif',
     client: 'C.C. Costa Azul / Arkangel Service',
     description: 'Producción y cobertura de evento "Fan Fest" para la transmisión de partidos de la Vinotinto. El proyecto incluyó instalación de pantalla LED gigante, sonido profesional, animación en vivo y dinámicas de premiación para los asistentes, logrando una exitosa activación de marca en alianza con Polar.',
-    videoUrl: 'https://www.youtube.com/embed/Qkz7xLqwFn0'
+    videoUrl: 'https://www.youtube.com/embed/BLkRLp6zIDI'
   },
   // { 
   //   title: 'Estrategia Redes Sociales "Moda Viva"', 

@@ -33,7 +33,7 @@ const ServicesHighlightSection: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="py-24 f-homepage-Services">
+    <section className="py-24 f-homepageS ">
       {/* 4. Colocamos la ref en el div que envuelve TODO el contenido a animar */}
       <div ref={containerRef} className="container mx-auto px-6">
         
@@ -45,19 +45,19 @@ const ServicesHighlightSection: React.FC = () => {
         
         {/* Este es el segundo hijo (elementsToAnimate[1]) */}
         <div className="grid md:grid-cols-2 gap-8  ">
-          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300">
+          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300 ">
             <h3 className="text-2xl font-bold text-white">Producción Audiovisual</h3>
             <p className="mt-4 text-white/70">Desde la concepción de la idea hasta la entrega final, creamos contenido visual impactante y efectivo que cautiva a tu audiencia.</p>
           </div>
-          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300">
+          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300 ">
             <h3 className="text-2xl font-bold text-white">Marketing Digital y Creatividad</h3>
             <p className="mt-4 text-white/70">Desarrollamos estrategias integrales para conectar tu marca con su audiencia, acelerando el crecimiento en el ámbito digital.</p>
           </div>
-          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300">
+          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300 ">
             <h3 className="text-2xl font-bold text-white">Desarrollo Web</h3>
             <p className="mt-4 text-white/70">Creamos sitios web potentes y atractivos que convierten visitantes en clientes, desde WordPress hasta soluciones personalizadas desde cero.</p>
           </div>
-          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300">
+          <div className="bg-[#1A1A1A] p-8 rounded-2xl border border-[#333333] hover:border-[#ff6600] transition-all duration-300 ">
             <h3 className="text-2xl font-bold text-white">Trafficker Digital y Estrategia de Campañas</h3>
             <p className="mt-4 text-white/70">Atraemos tráfico cualificado y maximizamos tu retorno de inversión con campañas optimizadas en Meta, Google y TikTok Ads.</p>
           </div>

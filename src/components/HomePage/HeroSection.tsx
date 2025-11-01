@@ -5,7 +5,7 @@ import { SplitText } from 'gsap/SplitText';
 import ArrowRightIcon from '@/components/icons/ArrowRightIcon';
 import ShinyText from '@/components/HomePage/common/ShinyText';
 // 👈 IMPORTACIÓN DEL VIDEO: Asumiendo que el archivo está en src/assets/
-import heroVideo from '/4101mediafondo.webm'; 
+import heroVideo from '/home.mp4'; 
 
 // Register the SplitText plugin
 gsap.registerPlugin(SplitText);
@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
 
   return (
     // 'relative' y 'overflow-hidden' ya están correctos para el contenedor del video
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 brand-dark contenedor-video">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 brand-dark contenedor-video ">
       
       {/* AÑADIDO: Video de Fondo */}
       <video
@@ -44,10 +44,10 @@ const HeroSection: React.FC = () => {
         playsInline 
         preload="metadata" 
   
-        className="absolute top-0 left-0 w-full h-full object-cover z-0" 
+        className="absolute top-0 left-0 w-full h-full object-cover z-0 overlay-video-dark" 
       >
 
-        <source src={heroVideo} type="video/webm" />
+        <source src={heroVideo} type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
 
@@ -64,12 +64,7 @@ const HeroSection: React.FC = () => {
         </h1>
         <div className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/80">
           
-          <ShinyText 
-            text="Somos 4101 Media, una productora audiovisual que impulsa empresas y emprendedores a través de estrategias de marketing digital y contenido de alto impacto." 
-            disabled={false} 
-            speed={3} 
-            className='custom-class' 
-          />
+          <p className="text-white">Somos 4101 Media, una productora audiovisual que impulsa empresas y emprendedores a través de estrategias de marketing digital y contenido de alto impacto.</p>
         </div>
         <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
           <Link to="/porfolio" className="bg-[#ff6600] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#e65c00] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
